@@ -8,3 +8,4 @@
 
 そうです。
 
+[READMEの書き方](https://help.github.com/ja/github/writing-on-github/basic-writing-and-formatting-syntax)
