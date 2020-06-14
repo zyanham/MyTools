@@ -8,7 +8,7 @@
 
 そうです。
 
-[READMEの書き方](https://help.github.com/ja/github/writing-on-github/basic-writing-and-formatting-syntax)
+[READMEの書き方](https://help.github.com/ja/github/writing-on-github/basic-writing-and-formatting-syntax)  
 [参考:鍵の作り方](https://qiita.com/drapon/items/441e18452b25060d61f1)
 
 git status  
