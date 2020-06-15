@@ -1,4 +1,4 @@
-#### Ubuntu18.04LTS設定メモ  
+### Ubuntu18.04LTS設定メモ  
 ##### ■ スクリーンのブランク設定を外しておくと良い。  
 設定→電源管理→ブランクスクリーン→しない  
   
@@ -45,13 +45,13 @@ sudo apt -y install python3-testresources
 ##### ■ コーデックを入れるためGstreamerをインストールしよう  
 https://gstreamer.freedesktop.org/documentation/installing/on-linux.html?gi-language=c  
 
-#### Ubuntu18 基本設定メモ
-###ユーザーを作成する
+### Ubuntu18 基本設定メモ
+##### ユーザーを作成する
 ```
 adduser <user name>
 ```
 
-###sudoグループにユーザを追加する
+##### sudoグループにユーザを追加する
 ```
 gpasswd -a <user name> sudo
 ```
