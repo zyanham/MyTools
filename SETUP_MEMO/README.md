@@ -46,9 +46,10 @@ sudo apt -y install python3-testresources
 https://gstreamer.freedesktop.org/documentation/installing/on-linux.html?gi-language=c  
 
 ### Ubuntu18 基本設定メモ
-##### ユーザーを作成する
+##### ユーザーを作成,パスワードを設定する
 ```
-adduser <user name>
+adduser -m <user name>
+passwd <ユーザ名>
 ```
 
 ##### sudoグループにユーザを追加する
