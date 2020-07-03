@@ -55,3 +55,12 @@ adduser <user name>
 ```
 gpasswd -a <user name> sudo
 ```
+
+##### ユーザーを削除する
+```
+userdel -r <user name>
+```
+##### ユーザーを確認する
+```
+cat /etc/passwd
+```
