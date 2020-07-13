@@ -75,3 +75,7 @@ userdel -r <user name>
 ```
 cat /etc/passwd
 ```
+
+
+メモ
+https://qiita.com/mocobt/items/726024fa1abf54d843e1
