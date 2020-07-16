@@ -79,3 +79,15 @@ cat /etc/passwd
 
 メモ
 https://qiita.com/mocobt/items/726024fa1abf54d843e1
+
+```
+xhost +local:  
+xhost -local:  
+```
+
+MicroBlazeでFreeRTOSを動かす
+https://qiita.com/Rohira/items/6d0b8e9b848bc4b9db6
+
+```
+docker run -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY $IMAGE
+```
