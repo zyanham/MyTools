@@ -18,4 +18,5 @@ git mv <ファイル名>
 git add <ファイル名>  
 git rm <ファイル名>  
 git pull origin master  
+git push  
 ```
