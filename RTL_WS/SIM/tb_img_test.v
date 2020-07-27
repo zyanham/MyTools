@@ -2,7 +2,7 @@
 
 module tb_img_test ();
     reg  clk, rst ;
-    wire VSYNC, HSYNC, VSYNC_1d, HSYNC_1d ;
+    wire VSYNC, HSYNC;
 
     reg [11:0] test01_img [0:(2448*2048-1)] ;
     reg [11:0] test02_img [0:(2448*2048-1)] ;
@@ -18,18 +18,39 @@ module tb_img_test ();
     parameter STEP = 10 ;
     parameter DLY = 0.1 ;
 
-    integer fp_out01, fp_out02, fp_out03, fp_out04, fp_out05,
-	        fp_out06, fp_out07, fp_out08, fp_out09, fp_out10,
-			fp_out11, fp_out12, fp_out13, fp_out14, fp_out15,
-			fp_out16, fp_out17, fp_out18, fp_out19, fp_out20;
-
-    initial begin
-	    fp_out01 = $fopen("test01_out.txt");
-	end
-
     video_signal_generate video_signal_generate(
 	    .clk(clk), .rst(rst), .enable(~rst),
-		.VSYNC(VSYNC), .HSYNC(HSYNC), .VSYNC_1d(VSYNC_1d), .HSYNC_1d(HSYNC_1d));
+		.VSYNC(VSYNC), .HSYNC(HSYNC));
+
+
+    wire              outV_IMG01, outV_IMG02 , outV_IMG03 , outV_IMG04 , outV_IMG05 ,
+                           outV_IMG06 ,  outV_IMG07 , outV_IMG08 , outV_IMG09 , outV_IMG10 ;
+    wire              outH_IMG01, outH_IMG02, outH_IMG03 , outH_IMG04 , outH_IMG05 ,
+                           outH_IMG06 ,  outH_IMG07 , outH_IMG08 , outH_IMG09 , outH_IMG10 ;
+    wire [11:0] outDATA_IMG01, outDATA_IMG02, outDATA_IMG03, outDATA_IMG04, outDATA_IMG05 ,
+                            outDATA_IMG06, outDATA_IMG07, outDATA_IMG08, outDATA_IMG09, outDATA_IMG10 ;
+
+    INPUT_IMG #(.INFILE_NAME("test01_image.mem")) INPUT_IMG01(.clk(clk), .rst(rst), .inV(VSYNC), .inH(HSYNC), .outV(outV_IMG01), .outH(outH_IMG01), .outDATA(outDATA_IMG01[11:0])) ;
+    INPUT_IMG #(.INFILE_NAME("test02_image.mem")) INPUT_IMG02(.clk(clk), .rst(rst), .inV(VSYNC), .inH(HSYNC), .outV(outV_IMG02), .outH(outH_IMG02), .outDATA(outDATA_IMG02[11:0])) ;
+    INPUT_IMG #(.INFILE_NAME("test03_image.mem")) INPUT_IMG03(.clk(clk), .rst(rst), .inV(VSYNC), .inH(HSYNC), .outV(outV_IMG03), .outH(outH_IMG03), .outDATA(outDATA_IMG03[11:0])) ;
+    INPUT_IMG #(.INFILE_NAME("test04_image.mem")) INPUT_IMG04(.clk(clk), .rst(rst), .inV(VSYNC), .inH(HSYNC), .outV(outV_IMG04), .outH(outH_IMG04), .outDATA(outDATA_IMG04[11:0])) ;
+    INPUT_IMG #(.INFILE_NAME("test05_image.mem")) INPUT_IMG05(.clk(clk), .rst(rst), .inV(VSYNC), .inH(HSYNC), .outV(outV_IMG05), .outH(outH_IMG05), .outDATA(outDATA_IMG05[11:0])) ;
+    INPUT_IMG #(.INFILE_NAME("test06_image.mem")) INPUT_IMG06(.clk(clk), .rst(rst), .inV(VSYNC), .inH(HSYNC), .outV(outV_IMG06), .outH(outH_IMG06), .outDATA(outDATA_IMG06[11:0])) ;
+    INPUT_IMG #(.INFILE_NAME("test07_image.mem")) INPUT_IMG07(.clk(clk), .rst(rst), .inV(VSYNC), .inH(HSYNC), .outV(outV_IMG07), .outH(outH_IMG07), .outDATA(outDATA_IMG07[11:0])) ;
+    INPUT_IMG #(.INFILE_NAME("test08_image.mem")) INPUT_IMG08(.clk(clk), .rst(rst), .inV(VSYNC), .inH(HSYNC), .outV(outV_IMG08), .outH(outH_IMG08), .outDATA(outDATA_IMG08[11:0])) ;
+    INPUT_IMG #(.INFILE_NAME("test09_image.mem")) INPUT_IMG09(.clk(clk), .rst(rst), .inV(VSYNC), .inH(HSYNC), .outV(outV_IMG09), .outH(outH_IMG09), .outDATA(outDATA_IMG09[11:0])) ;
+    INPUT_IMG #(.INFILE_NAME("test10_image.mem")) INPUT_IMG10(.clk(clk), .rst(rst), .inV(VSYNC), .inH(HSYNC), .outV(outV_IMG10), .outH(outH_IMG10), .outDATA(outDATA_IMG10[11:0])) ;
+
+    OUTPUT_IMG #(.OUTFILE_NAME("test01_out.txt")) OUTPUT_IMG01(.clk(clk), .rst(rst), .inV(outV_IMG01), .inH(outH_IMG01), .inDATA(outDATA_IMG01[11:0])) ;
+    OUTPUT_IMG #(.OUTFILE_NAME("test02_out.txt")) OUTPUT_IMG02(.clk(clk), .rst(rst), .inV(outV_IMG02), .inH(outH_IMG02), .inDATA(outDATA_IMG02[11:0])) ;
+    OUTPUT_IMG #(.OUTFILE_NAME("test03_out.txt")) OUTPUT_IMG03(.clk(clk), .rst(rst), .inV(outV_IMG03), .inH(outH_IMG03), .inDATA(outDATA_IMG03[11:0])) ;
+    OUTPUT_IMG #(.OUTFILE_NAME("test04_out.txt")) OUTPUT_IMG04(.clk(clk), .rst(rst), .inV(outV_IMG04), .inH(outH_IMG04), .inDATA(outDATA_IMG04[11:0])) ;
+    OUTPUT_IMG #(.OUTFILE_NAME("test05_out.txt")) OUTPUT_IMG05(.clk(clk), .rst(rst), .inV(outV_IMG05), .inH(outH_IMG05), .inDATA(outDATA_IMG05[11:0])) ;
+    OUTPUT_IMG #(.OUTFILE_NAME("test06_out.txt")) OUTPUT_IMG06(.clk(clk), .rst(rst), .inV(outV_IMG06), .inH(outH_IMG06), .inDATA(outDATA_IMG06[11:0])) ;
+    OUTPUT_IMG #(.OUTFILE_NAME("test07_out.txt")) OUTPUT_IMG07(.clk(clk), .rst(rst), .inV(outV_IMG07), .inH(outH_IMG07), .inDATA(outDATA_IMG07[11:0])) ;
+    OUTPUT_IMG #(.OUTFILE_NAME("test08_out.txt")) OUTPUT_IMG08(.clk(clk), .rst(rst), .inV(outV_IMG08), .inH(outH_IMG08), .inDATA(outDATA_IMG08[11:0])) ;
+    OUTPUT_IMG #(.OUTFILE_NAME("test09_out.txt")) OUTPUT_IMG09(.clk(clk), .rst(rst), .inV(outV_IMG09), .inH(outH_IMG09), .inDATA(outDATA_IMG09[11:0])) ;
+    OUTPUT_IMG #(.OUTFILE_NAME("test10_out.txt")) OUTPUT_IMG10(.clk(clk), .rst(rst), .inV(outV_IMG10), .inH(outH_IMG10), .inDATA(outDATA_IMG10[11:0])) ;
 
     initial begin
 	    clk = 1 ;
@@ -41,35 +62,8 @@ module tb_img_test ();
 		#0.1 //psd dly
 		#(STEP*20);
 		rst = 0 ;
-		#((STEP*2448*2048)+(STEP*1000));
+		#(STEP*2600*2048);
 		$finish();
     end
-
-    reg [1:0] test01_STATE ;
-	always @ (posedge clk) begin
-	    if(rst) begin
-		    test01_STATE[1:0] <= #(DLY) 2'd0 ;
-		end else begin
-		    case (test01_STATE[1:0])
-			    2'd0 : begin
-				    if(VSYNC & ~VSYNC_1d) test01_STATE[1:0] <=  #(DLY) 2'd1 ;
-				end
-				2'd1 : begin
-				    if(HSYNC_1d) $fdisplay(fp_out01, "FFF");
-					if(~VSYNC & VSYNC_1d) test01_STATE[1:0] <= #(DLY) 2'd2 ;
-				end
-				2'd2 : begin
-				    $fclose(fp_out01);
-				    test01_STATE[1:0] <= #(DLY) 2'd3 ;
-				end
-				2'd3 : begin
-				    test01_STATE[1:0] <= #(DLY) test01_STATE[1:0] ;
-				end
-				default : begin
-				    test01_STATE[1:0] <= #(DLY) 2'd0 ;
-				end
-			endcase
-		end
-	end
 
 endmodule

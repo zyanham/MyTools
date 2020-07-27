@@ -12,9 +12,7 @@ module video_signal_generate(
 	input rst,
 	input enable,
 	output VSYNC,
-	output HSYNC,
-	output VSYNC_1d,
-	output HSYNC_1d
+	output HSYNC
 );
 
     parameter VBLK = 100 ;
@@ -57,28 +55,20 @@ module video_signal_generate(
 	wire v_active = (((VBLK + V_BP - 1) < vcnt) & ((VBLK + V_BP + V_WIDTH - 1) >= vcnt));
 	wire h_active = (v_active & (((HBLK + H_BP - 1) < hcnt) & ((HBLK + H_BP + H_WIDTH - 1) >= hcnt)));
     // 20 -> 2468
-	
+
     reg h_active_hld, v_active_hld;
-    reg h_active_hld_hld, v_active_hld_hld;
-	
 	always @ (posedge clk) begin
 	    if(rst) begin
 		    h_active_hld     <= #(DLY) 0 ;
 		    v_active_hld     <= #(DLY) 0 ;
-		    h_active_hld_hld <= #(DLY) 0 ;
-		    v_active_hld_hld <= #(DLY) 0 ;
 		end else begin
 		    h_active_hld     <= #(DLY) h_active ;
 		    v_active_hld     <= #(DLY) v_active ;
-		    h_active_hld_hld <= #(DLY) h_active_hld ;
-		    v_active_hld_hld <= #(DLY) v_active_hld ;
 		end
 	end
-	
+
 	assign HSYNC    = (enable)? h_active_hld     : 0 ;
 	assign VSYNC    = (enable)? v_active_hld     : 0 ;
-	assign HSYNC_1d = (enable)? h_active_hld_hld : 0 ;
-	assign VSYNC_1d = (enable)? v_active_hld_hld : 0 ;
 	
 	
 endmodule
