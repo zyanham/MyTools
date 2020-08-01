@@ -7,7 +7,16 @@
 LANG=en_US.utf8 xdg-user-dirs-gtk-update  
 sudo reboot  
 ```
-  
+
+##### ■ファイルシステムexFATを有効にする  
+```
+sudo add-apt-repository universe
+sudo apt update
+sudo apt install exfat-fuse exfat-utils
+```
+
+
+
 ##### ■ターミナルにフルパスではなくカレントディレクトリのみ表示するには  
 .bashrcのPS1に表記されている\Wを大文字Wにする。  
   
