@@ -91,3 +91,14 @@ https://qiita.com/Rohira/items/6d0b8e9b848bc4b9db6
 ```
 docker run -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY $IMAGE
 ```
+
+
+中央から横1280:縦960でクロップ  
+```
+ffmpeg -i <input> -vf crop=w=1280:h=960 <output>
+```
+
+縦480pixにあわせて動画を圧縮  
+```
+ffmpeg -i <input> -vf scale=-1:480 <output>
+```
