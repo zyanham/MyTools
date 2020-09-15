@@ -111,3 +111,8 @@ ffmpeg -i <input> -vf crop=w=1280:h=960 <output>
 ```
 ffmpeg -i <input> -vf scale=-1:480 <output>
 ```
+
+カレントディレクトリのファイルの名前と番号をつけ直すmvのリストを出力するスクリプト
+```
+ls | awk '{ printf "mv %s TEST_IMG%03d.JPG\n", $0, NR }' > xlist.txt
+```
