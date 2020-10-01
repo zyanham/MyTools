@@ -45,11 +45,12 @@ sudo apt -y install libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev libgtk2
   
 sudo apt -y install libprotobuf-dev protobuf-compiler libgoogle-glog-dev libgflags-dev libgphoto2-dev libeigen3-dev libhdf5-dev doxygen  
   
+sudo -H pip3 install -U pip 
 pip3 install opencv-python  
 pip3 install pydot-ng  
 pip3 install slidingwindow  
 pip3 install -U scipy  
-sudo -H pip3 install -U pip numpy  
+sudo -H pip3 install -U numpy
 sudo apt -y install python3-testresources  
 ```
   
