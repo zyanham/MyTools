@@ -50,8 +50,11 @@ cd /usr/include/linux
 sudo ln -s -f ../libv4l1-videodev.h videodev.h  
 cd "$cwd"  
   
-sudo apt -y install libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev libgtk2.0-dev libtbb-dev qt5-default libatlas-base-dev libfaac-dev libmp3lame-dev libtheora-dev libvorbis-dev libxvidcore-dev libopencore-amrnb-dev libopencore-amrwb-dev libavresample-dev x264 v4l-utils  
-sudo apt -y install libprotobuf-dev protobuf-compiler libgoogle-glog-dev libgflags-dev libgphoto2-dev libeigen3-dev libhdf5-dev doxygen  
+sudo apt -y install libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev libgtk2.0-dev libtbb-dev qt5-default \  
+                    libatlas-base-dev libfaac-dev libmp3lame-dev libtheora-dev libvorbis-dev libxvidcore-dev \  
+                    libopencore-amrnb-dev libopencore-amrwb-dev libavresample-dev x264 v4l-utils  
+sudo apt -y install libprotobuf-dev protobuf-compiler libgoogle-glog-dev libgflags-dev libgphoto2-dev libeigen3-dev \  
+                    libhdf5-dev doxygen  
   
 sudo -H pip3 install -U pip 
 pip3 install opencv-python  
