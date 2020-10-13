@@ -128,3 +128,5 @@ ffmpeg -i <input> -vf scale=-1:480 <output>
 ```
 ls | awk '{ printf "mv %s TEST_IMG%03d.JPG\n", $0, NR }' > xlist.txt
 ```
+
+[Ubuntu18.04にNVIDIAドライバを入れる:参考記事](https://qiita.com/kawazu191128/items/8a46308be6949f5bda57)  
