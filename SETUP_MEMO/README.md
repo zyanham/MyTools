@@ -19,6 +19,7 @@ sudo apt install exfat-fuse exfat-utils
 
 ##### ■ターミナルにフルパスではなくカレントディレクトリのみ表示するには  
 .bashrcのPS1に表記されている\Wを大文字Wにする。  
+Historyの記憶サイズを変更する→HISTSIZE=の数値を変更する。  
   
 ##### ■apt-getのアップデート  
 パッケージインストールツールapt-getのパッケージ一覧のアップデートを実施。  
