@@ -1,6 +1,6 @@
 Vitisアクセラレーションフロー使用後のSDカードへのイメージ書き込みについて  
 [UG1393 Vitis Application Acceleration P483](https://japan.xilinx.com/support/documentation/sw_manuals_j/xilinx2020_1/ug1393-vitis-application-acceleration.pdf#page=483)
-
+  
 PetalinuxのDTG Settings->MAHINE_NAMEは規定の評価ボードがある場合は選択する  
 [UG1144 Petalinux tools Reference Guide P25](https://japan.xilinx.com/support/documentation/sw_manuals_j/xilinx2020_1/ug1144-petalinux-tools-reference-guide.pdf#page=25)  
   
@@ -9,8 +9,8 @@ Vitis Vision LibraryはU200にしか対応していない。(DDRの容量など�
 →これによりU50などではプロジェクトで呼び出すことができなかった。  
 Vision Libraryを実行するのにOpenCVのインストールは別途必要のよう。  
 → [ソース](https://forums.xilinx.com/t5/High-Level-Synthesis-HLS/Using-Vitis-Vision-Libraries-and-OpenCV/td-p/1170435)  
-
-OpenCVが入っているかどうかを調べる(python3経由)  
+  
+OpenCVが入っているかどうかを調べる(python3経由)
 ```
 Python3  
 import cv2  
