@@ -80,8 +80,8 @@ https://gstreamer.freedesktop.org/documentation/installing/on-linux.html?gi-lang
 ### Ubuntu18 基本設定メモ
 ##### ユーザーを作成,パスワードを設定する
 ```
-adduser -m <user name>
-passwd <ユーザ名>
+adduser <user name>
+passwd <user name>
 ```
 
 ##### sudoグループにユーザを追加する
