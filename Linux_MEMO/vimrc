@@ -1,0 +1,13 @@
+set number
+set title
+set tabstop=4
+set cursorline
+syntax on
+
+highlight Comment ctermfg=Green
+highlight Constant ctermfg=Red
+highlight Identifier ctermfg=Cyan
+highlight Statement ctermfg=Yellow
+highlight Title ctermfg=Magenta
+highlight Special ctermfg=Magenta
+highlight PreProc ctermfg=Magenta
