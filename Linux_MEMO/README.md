@@ -131,3 +131,17 @@ ls | awk '{ printf "mv %s TEST_IMG%03d.JPG\n", $0, NR }' > xlist.txt
 ```
 
 [Ubuntu18.04にNVIDIAドライバを入れる:参考記事](https://qiita.com/kawazu191128/items/8a46308be6949f5bda57)  
+  
+  
+シェルの種類はだいたい  
+bash, csh/tcsh, dash, zshなど
+> ls -l /bin/sh
+で現在のシェルが何になっているかを調べることができる  
+  
+  
+find command  
+
+grep command  
+sed command
+
+
