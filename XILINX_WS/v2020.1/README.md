@@ -10,6 +10,11 @@ Vitis Vision LibraryはU200にしか対応していない。(DDRの容量など�
 Vision Libraryを実行するのにOpenCVのインストールは別途必要のよう。  
 → [ソース](https://forums.xilinx.com/t5/High-Level-Synthesis-HLS/Using-Vitis-Vision-Libraries-and-OpenCV/td-p/1170435)  
   
+#### ■ OpenCのインストール  
+```
+https://github.com/opencv/opencv
+```
+
 #### ■ OpenCVが入っているかどうかを調べる(python3経由)
 ```
 Python3  
@@ -17,7 +22,7 @@ import cv2
 cv2.__version__  
 ```
 
-#### ■ 古いバージョンをアンインストールする  
+#### ■ OpenCVの古いバージョンをアンインストールする  
 ```
 cd ~/src/cpp/opencv/build  
 sudo make install  
