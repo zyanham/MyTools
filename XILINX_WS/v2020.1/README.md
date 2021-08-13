@@ -18,6 +18,7 @@ cv2.__version__
 ```
 
 #### ■ 古いバージョンをアンインストールする  
+```
 cd ~/src/cpp/opencv/build  
 sudo make install  
 sudo make uninstall  
@@ -25,6 +26,7 @@ sudo rm -rf /usr/local/include/opencv
 rm -rf ~/.cache/opencv  
 cd ~/src/cpp  
 rm -rf ~/src/cpp/opencv  
+```
   
 #### ■ U96V2+PetalinuxでUSBカメラの絵出しを確認
 ```
