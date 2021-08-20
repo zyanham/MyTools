@@ -279,7 +279,7 @@ mkdir u96v2_pkg
 cd u96v2_pkg  
 mkdir pfm  
 cd pfm  
-mkdir boot image  
+mkdir boot image qemu
   
 cd boot  
 vim linux.bif  
