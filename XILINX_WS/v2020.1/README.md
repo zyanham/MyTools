@@ -10,6 +10,21 @@ Vitis Vision LibraryはU200にしか対応していない。(DDRの容量など�
 Vision Libraryを実行するのにOpenCVのインストールは別途必要のよう。  
 → [ソース](https://forums.xilinx.com/t5/High-Level-Synthesis-HLS/Using-Vitis-Vision-Libraries-and-OpenCV/td-p/1170435)  
   
+#### ■ OpenCVのインストール  
+```
+https://github.com/opencv/opencv
+opencvとopencv_contribをダウンロード
+opencvディレクトリにbuildディレクトリを作成
+cd build
+
+cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local -D INSTALL_PYTHON_EXAMPLES=ON -D INSTALL_C_EXAMPLES=OFF -D OPENCV_EXTRA_MODULES_PATH=../../opencv_contrib-4.4.0/modules -D BUILD_EXAMPLES=ON ..  
+
+make -j4
+sudo make install
+sudo ldconfig
+opencv_version
+```
+
 #### ■ OpenCVが入っているかどうかを調べる(python3経由)
 ```
 Python3  
@@ -17,6 +32,17 @@ import cv2
 cv2.__version__  
 ```
 
+#### ■ OpenCVの古いバージョンをアンインストールする  
+```
+cd ~/src/cpp/opencv/build  
+sudo make install  
+sudo make uninstall  
+sudo rm -rf /usr/local/include/opencv  
+rm -rf ~/.cache/opencv  
+cd ~/src/cpp  
+rm -rf ~/src/cpp/opencv  
+```
+  
 #### ■ U96V2+PetalinuxでUSBカメラの絵出しを確認
 ```
 import cv2
