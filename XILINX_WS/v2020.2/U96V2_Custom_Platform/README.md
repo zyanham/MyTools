@@ -319,3 +319,72 @@ cp ../../../petalinux/u96v2_cultom_plnx/images/linux/system.dtb .
 　XRT2020.2では必要ありません  
   
   
+*********************************************************  
+vim linux.bif
+
+/* linux */
+ the_ROM_image:
+ {
+ 	[fsbl_config] a53_x64
+ 	[bootloader] <fsbl.elf>
+ 	[pmufw_image] <pmufw.elf>
+ 	[destination_device=pl] <bitstream>
+ 	[destination_cpu=a53-0, exception_level=el-3, trustzone] <bl31.elf>
+ 	[destination_cpu=a53-0, exception_level=el-2] <u-boot.elf>
+ }
+*********************************************************  
+
+
+■エミュレーションを有効にする  
+  
+cd ../qemu  
+  
+*********************************************************  
+vim qemu_args.txt
+  
+-M  
+arm-generic-fdt  
+-serial  
+mon:stdio  
+-global  
+xlnx,zynqmp-boot.cpu-num=0  
+-global  
+xlnx,zynqmp-boot.use-pmufw=true  
+-net  
+nic  
+-net  
+nic  
+-net  
+nic  
+-net  
+nic  
+-net  
+user  
+-m  
+4G  
+-device  
+loader,file=<xrt/qemu/bl31.elf>,cpu-num=0  
+-device  
+loader,file=<xrt/qemu/u-boot.elf>  
+-boot  
+mode=5  
+  
+  
+*********************************************************  
+vim pmu_args.txt
+  
+-M  
+microblaze-fdt  
+-device  
+loader,file=<xrt/qemu/pmufw.elf>  
+-machine-path  
+.  
+-display  
+none  
+  
+*********************************************************  
+  
+
+Qemu Data : Bootディレクトリを再利用できる
+Qemu Arg : qemu_args.txtを使用
+Pmu Arg : pmu_args.txtを使用
