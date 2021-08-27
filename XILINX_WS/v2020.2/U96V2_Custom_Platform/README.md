@@ -320,18 +320,18 @@ cp ../../../petalinux/u96v2_cultom_plnx/images/linux/system.dtb .
   
   
 *********************************************************  
-vim linux.bif
-
-/* linux */
- the_ROM_image:
- {
- 	[fsbl_config] a53_x64
- 	[bootloader] <fsbl.elf>
- 	[pmufw_image] <pmufw.elf>
- 	[destination_device=pl] <bitstream>
- 	[destination_cpu=a53-0, exception_level=el-3, trustzone] <bl31.elf>
- 	[destination_cpu=a53-0, exception_level=el-2] <u-boot.elf>
- }
+vim linux.bif　　
+　　
+/* linux */　　
+ the_ROM_image:　　
+ {　　
+ 	[fsbl_config] a53_x64　　
+ 	[bootloader] <fsbl.elf>　　
+ 	[pmufw_image] <pmufw.elf>　　
+ 	[destination_device=pl] <bitstream>　　
+ 	[destination_cpu=a53-0, exception_level=el-3, trustzone] <bl31.elf>　　
+ 	[destination_cpu=a53-0, exception_level=el-2] <u-boot.elf>　　
+ }　　
 *********************************************************  
 
 
