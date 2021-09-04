@@ -1,3 +1,27 @@
+#### ★GitHub「Personal access tokens」の設定方法  
+https://qiita.com/kz800/items/497ec70bff3e555dacd0  
+  
+#### ★Vivado 2021.1で外部ボードファイルの適用する方法  
+外部からボードファイルを適用しにくくなった。  
+  
+まずはXILINXブランド以外のボードファイルをダウンロード  
+Digilent: git clone https://github.com/Digilent/vivado-boards.git  
+AVNET: git clone https://github.com/Avnet/bdf.git  
+  
+通常インストール時なら下記のパスにTCLを配置する。  
+.Xilinx/Vivado/2021.1/Vivado_init.tcl  
+  
+記述例  
+***********************************************************  
+set_param board.repoPaths /mnt/backup/Digilent/board_files  
+set_param board.repopaths /mnt/backup/Avnet  
+***********************************************************  
+  
+#### ★2021.1 Ultra96: Ultra96 ボードで PS DisplayPort が機能しない  
+  
+https://japan.xilinx.com/support/answers/76568.html  
+  
+  
 #### ■ Vitisアクセラレーションフロー使用後のSDカードへのイメージ書き込みについて
 [UG1393 Vitis Application Acceleration P483](https://japan.xilinx.com/support/documentation/sw_manuals_j/xilinx2020_1/ug1393-vitis-application-acceleration.pdf#page=483)
   
