@@ -22,7 +22,7 @@ ABS_BD_TCL=$(ROOT_DIR)/$(BD_TCL)
 PETALINUX_CONFIG=$(PETALINUX_DIR)/project-spec/configs/config
 PETALINUX_ROOTFS_CONFIG=$(PETALINUX_DIR)/project-spec/configs/rootfs_config
 PETALINUX_KERNEL_CONFIG=$(PETALINUX_DIR)/project-spec/meta-user/recipes-kernel/linux/linux-xlnx/bsp.cfg
-#PETALINUX_KERNEL_DEFINE=$(PETALINUX_DIR)/project-spec/meta-user/recipes-kernel/linux/linux-xlnx_\%.bbappend
+DEVICE_TREE_PATCH_PATH=$(PETALINUX_DIR)/project-spec/meta-user/recipes-bsp/device-tree/device-tree.bbappend
 
 .PHONY: all get_xsa petalinux clean main
 
@@ -134,6 +134,13 @@ petalinux_proj:
 	$(MAKE) -f $(lastword $(MAKEFILE_LIST)) update_config
 	petalinux-config -p $(PETALINUX_DIR) --get-hw-description=$(ROOT_DIR) --silentconfig
 	mkdir -p $(PETALINUX_DIR)/project-spec/meta-user/recipes-kernel/linux/linux-xlnx
+
+	#################
+	# v2021.1 PATCH #
+	#################
+	cp $(ROOT_DIR)/0001-kernel-v2021.1-Sync-the-psgtr-node-from-U-boot.patch $(PETALINUX_DIR)/project-spec/meta-user/recipes-bsp/device-tree/files
+	sed -i -e 's/SRC_URI_append = " file:\/\/config file:\/\/system-user.dtsi"/SRC_URI_append = " file:\/\/config file:\/\/system-user.dtsi file:\/\/0001-kernel-v2021.1-Sync-the-psgtr-node-from-U-boot.patch"/' $(DEVICE_TREE_PATCH_PATH)
+
 	$(MAKE) -f $(lastword $(MAKEFILE_LIST)) update_kernel_config
 	$(MAKE) -f $(lastword $(MAKEFILE_LIST)) update_kernel_define
 	$(MAKE) -f $(lastword $(MAKEFILE_LIST)) update_rootfs_config
