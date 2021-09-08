@@ -93,7 +93,7 @@ sudo /opt/xilinx/xrt/bin/xbmgmt flash --update --shell xilinx_u50_xdma_201920_1
 
 U200 command  
 ```
-sudo /opt/xilinx/xrt/bin/xbutil flash -a xilinx_u200_xdma_201830_2 -t 1561465320  
+sudo /opt/xilinx/xrt/bin/xbmgmt flash --update --shell xilinx_u200_gen3x16_xdma_base_1  
 ```
 
 U250  
