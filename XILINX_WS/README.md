@@ -1,6 +1,3 @@
-#### ★GitHub「Personal access tokens」の設定方法  
-https://qiita.com/kz800/items/497ec70bff3e555dacd0  
-  
 #### ★Vivado 2021.1で外部ボードファイルの適用する方法  
 外部からボードファイルを適用しにくくなった。  
   
@@ -16,23 +13,12 @@ AVNET: git clone https://github.com/Avnet/bdf.git
 set_param board.repoPaths /mnt/backup/Digilent/board_files  
 set_param board.repopaths /mnt/backup/Avnet  
 ***********************************************************  
-  
-#### ★2021.1 Ultra96: Ultra96 ボードで PS DisplayPort が機能しない  
-  
-https://japan.xilinx.com/support/answers/76568.html  
-  
-  
+    
 #### ■ Vitisアクセラレーションフロー使用後のSDカードへのイメージ書き込みについて
 [UG1393 Vitis Application Acceleration P483](https://japan.xilinx.com/support/documentation/sw_manuals_j/xilinx2020_1/ug1393-vitis-application-acceleration.pdf#page=483)
   
 #### ■ PetalinuxのDTG Settings->MAHINE_NAMEは規定の評価ボードがある場合は選択する
 [UG1144 Petalinux tools Reference Guide P25](https://japan.xilinx.com/support/documentation/sw_manuals_j/xilinx2020_1/ug1144-petalinux-tools-reference-guide.pdf#page=25)  
-  
-#### ■ Vitis Libraryは一部 対応ボードが存在する。
-Vitis Vision LibraryはU200にしか対応していない。(DDRの容量などの関係か？)  
-→これによりU50などではプロジェクトで呼び出すことができなかった。  
-Vision Libraryを実行するのにOpenCVのインストールは別途必要のよう。  
-→ [ソース](https://forums.xilinx.com/t5/High-Level-Synthesis-HLS/Using-Vitis-Vision-Libraries-and-OpenCV/td-p/1170435)  
   
 #### ■ OpenCVのインストール  
 ```
@@ -67,22 +53,6 @@ cd ~/src/cpp
 rm -rf ~/src/cpp/opencv  
 ```
   
-#### ■ U96V2+PetalinuxでUSBカメラの絵出しを確認
-```
-import cv2
-
-capture = cv2.VideoCapture(0)
-
-while(True):
-    ret, frame = capture.read()
-    cv2.imshow('frame',frame)
-    if cv2.waitKey(1) & 0xFF == ord('q'):
-        break
-
-capture.release()
-cv2.destroyAllWindows()
-```
-
 
 V2020.1  
 
