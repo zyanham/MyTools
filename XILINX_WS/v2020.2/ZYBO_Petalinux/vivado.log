@@ -1,0 +1,54 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:47 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Tue Apr 27 18:09:27 2021
+# Process ID: 7509
+# Current directory: /home/zyanham/Desktop/MyTools/XILINX_WS/v2020.2/ZYBO_Petalinux
+# Command line: vivado
+# Log file: /home/zyanham/Desktop/MyTools/XILINX_WS/v2020.2/ZYBO_Petalinux/vivado.log
+# Journal file: /home/zyanham/Desktop/MyTools/XILINX_WS/v2020.2/ZYBO_Petalinux/vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project /home/zyanham/Desktop/ZYBOZ7_HDMI/ZYBOZ7_HDMI.xpr
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/home/zyanham/digilent/vivado-library-master'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/home/zyanham/Xilinx/Vivado/2020.2/data/ip'.
+INFO: [IP_Flow 19-3899] Cannot get the environment domain name variable for the component vendor name. Setting the vendor name to 'user.org'.
+open_project: Time (s): cpu = 00:00:17 ; elapsed = 00:00:08 . Memory (MB): peak = 7453.109 ; gain = 134.113 ; free physical = 24440 ; free virtual = 30337
+update_compile_order -fileset sources_1
+write_project_tcl -use_bd_files {/home/zyanham/Desktop/ZYBOZ7_HDMI/ZYBOZ7_HDMI.tcl}
+INFO: [Vivado-projutils-8] Tcl script 'ZYBOZ7_HDMI.tcl' generated in output directory '/home/zyanham/Desktop/ZYBOZ7_HDMI'
+
+INFO: [Vivado-projutils-15] Please note that by default, the file path for the project source files were set wth respect to the 'origin_dir' variable in the
+ generated script. When this script is executed from the output directory, these source files will be referenced with respect to this 'origin_dir' path value.
+ In case this script was later moved to a different directory, the 'origin_dir' value must be set manually in the script with the path
+ relative to the new output directory to make sure that the source files are referenced correctly from the original project. You can also set the
+ 'origin_dir' automatically by setting the 'origin_dir_loc' variable in the tcl shell before sourcing this generated script. The 'origin_dir_loc'
+ variable should be set to the path relative to the new output directory. Alternatively, if you are sourcing the script from the Vivado command line,
+ then set the origin dir using '-tclargs --origin_dir <path>'. For example, 'vivado -mode tcl -source ZYBOZ7_HDMI.tcl -tclargs --origin_dir ".."
+
+WARNING: [Vivado-projutils-10] Found source(s) that were local or imported into the project. If this project is being source controlled, then
+ please ensure that the project source(s) are also part of this source controlled data. The list of these local source(s) can be found in the generated script
+ under the header section.
+
+write_project_tcl {/home/zyanham/Desktop/ZYBOZ7_HDMI/ZYBOZ7_HDMI_all.tcl}
+INFO: [BD 5-453] Writing out BD creation steps for design_1 as a TCL proc
+INFO: [Vivado-projutils-8] Tcl script 'ZYBOZ7_HDMI_all.tcl' generated in output directory '/home/zyanham/Desktop/ZYBOZ7_HDMI'
+
+INFO: [Vivado-projutils-15] Please note that by default, the file path for the project source files were set wth respect to the 'origin_dir' variable in the
+ generated script. When this script is executed from the output directory, these source files will be referenced with respect to this 'origin_dir' path value.
+ In case this script was later moved to a different directory, the 'origin_dir' value must be set manually in the script with the path
+ relative to the new output directory to make sure that the source files are referenced correctly from the original project. You can also set the
+ 'origin_dir' automatically by setting the 'origin_dir_loc' variable in the tcl shell before sourcing this generated script. The 'origin_dir_loc'
+ variable should be set to the path relative to the new output directory. Alternatively, if you are sourcing the script from the Vivado command line,
+ then set the origin dir using '-tclargs --origin_dir <path>'. For example, 'vivado -mode tcl -source ZYBOZ7_HDMI_all.tcl -tclargs --origin_dir ".."
+
+WARNING: [Vivado-projutils-10] Found source(s) that were local or imported into the project. If this project is being source controlled, then
+ please ensure that the project source(s) are also part of this source controlled data. The list of these local source(s) can be found in the generated script
+ under the header section.
+
+exit
+INFO: [Common 17-206] Exiting Vivado at Tue Apr 27 18:19:47 2021...
