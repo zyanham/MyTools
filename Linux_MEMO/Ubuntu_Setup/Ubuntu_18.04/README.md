@@ -92,6 +92,14 @@ echo /usr/local/lib > /etc/ld.so.conf.d/opencv.conf
 ldconfig -v
 opencv_version
 ```
+  
+■ OpenCVが入っているかどうかを調べる(python3経由)  
+```
+Python3  
+import cv2  
+cv2.__version__  
+```
+
 ##### ■cmakeが古い場合はアップグレードする
 ```
 まず、既にaptなどでcmakeをインストールしてしまっている場合は、アンインストールしましょう。
@@ -105,6 +113,17 @@ tar xvf cmake-3.6.2.tar.gz
 ./bootstrap && make && sudo make install
 
 echo 'export PATH=$HOME/cmake-3.6.2/bin/:$PATH' >> ~/.bashrc
+```
+
+#### ■ OpenCVの古いバージョンをアンインストールする  
+```
+cd ~/src/cpp/opencv/build  
+sudo make install  
+sudo make uninstall  
+sudo rm -rf /usr/local/include/opencv  
+rm -rf ~/.cache/opencv  
+cd ~/src/cpp  
+rm -rf ~/src/cpp/opencv  
 ```
 
 ### Ubuntu18 基本設定メモ
