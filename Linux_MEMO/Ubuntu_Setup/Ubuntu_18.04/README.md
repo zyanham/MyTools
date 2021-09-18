@@ -15,8 +15,6 @@ sudo apt update
 sudo apt install exfat-fuse exfat-utils
 ```
 
-
-
 ##### ■ターミナルにフルパスではなくカレントディレクトリのみ表示するには  
 .bashrcのPS1に表記されている\Wを大文字Wにする。  
 Historyの記憶サイズを変更する→HISTSIZE=の数値を変更する。  
@@ -76,6 +74,38 @@ set cusorline
   
 ##### ■ コーデックを入れるためGstreamerをインストールしよう  
 https://gstreamer.freedesktop.org/documentation/installing/on-linux.html?gi-language=c  
+
+##### ■OpenCVのインストール(4.4.0)
+OpenCVをダウンロード&インストールする
+```
+git clone https://github.com/opencv/opencv.git -b 4.4.0
+git clone https://github.com/opencv/opencv_contrib.git -b 4.4.0
+
+mkdir opencv/build
+cd opencv/build
+
+cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local -D INSTALL_PYTHON_EXAMPLES=ON -D INSTALL_C_EXAMPLES=OFF -D OPENCV_EXTRA_MODULES_PATH=../../opencv_contrib-4.4.0/modules -D BUILD_EXAMPLES=ON ..
+
+make -j7
+make install
+echo /usr/local/lib > /etc/ld.so.conf.d/opencv.conf
+ldconfig -v
+opencv_version
+```
+##### ■cmakeが古い場合はアップグレードする
+```
+まず、既にaptなどでcmakeをインストールしてしまっている場合は、アンインストールしましょう。
+sudo apt purge cmake
+
+libssl-devを削除してlibssl1.0-devをインストールする
+
+wget https://cmake.org/files/v3.6/cmake-3.6.2.tar.gz
+tar xvf cmake-3.6.2.tar.gz
+
+./bootstrap && make && sudo make install
+
+echo 'export PATH=$HOME/cmake-3.6.2/bin/:$PATH' >> ~/.bashrc
+```
 
 ### Ubuntu18 基本設定メモ
 ##### ユーザーを作成,パスワードを設定する
