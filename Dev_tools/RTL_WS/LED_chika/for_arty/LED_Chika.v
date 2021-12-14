@@ -1,4 +1,4 @@
-module led_chika(
+module LED_Chika(
 	input clk,
 	input rst,
 	output led
