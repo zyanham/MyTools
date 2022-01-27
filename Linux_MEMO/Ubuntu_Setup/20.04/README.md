@@ -1,39 +1,39 @@
-Ubuntu20.04LTS設定メモ  
-■ スクリーンのブランク設定を外す  
+### Ubuntu20.04LTS設定メモ  
+##### ■ スクリーンのブランク設定を外す  
 設定→電源→ブランクスクリーン→しない  
   
-■ 日本語化  
+##### ■ 日本語化  
 設定→地域と言語→日本語(Mozc)を選択  
   
-■ タスクバーの設定  
+##### ■ タスクバーの設定  
 いらないものは削除して、Chromeをインストールし、  
 Terminal/memo/system monitor/disk/chromeなど追加しておくとよい。  
   
-■デスクトップのディレクトリ類が日本語だった場合英語に戻すコマンド。  
+##### ■デスクトップのディレクトリ類が日本語だった場合英語に戻すコマンド。  
 LANG=en_US.utf8 xdg-user-dirs-gtk-update  
 sudo reboot  
   
-■ターミナルにフルパスではなくカレントディレクトリのみ表示するには  
+##### ■ターミナルにフルパスではなくカレントディレクトリのみ表示するには  
 .bashrcのPS1に表記されている\Wを大文字Wにする。  
 Historyの記憶サイズを変更する→HISTSIZE=の数値を変更する。  
   
-
-■ いろいろインストールしておく  
+##### ■ いろいろインストールしておく  
 bash install.bash  
   
-■ コーデックを入れるためGstreamerをインストールしよう  
+##### ■ コーデックを入れるためGstreamerをインストールしよう  
   
 https://gstreamer.freedesktop.org/documentation/installing/on-linux.html?gi-language=c  
   
-■OpenCVのインストール(4.4.0)  
+##### ■OpenCVのインストール(4.4.0)  
   
-■ OpenCVが入っているかどうかを調べる(python3経由)  
-  
+##### ■ OpenCVが入っているかどうかを調べる(python3経由)  
+```
 Python3  
 import cv2  
 cv2.__version__  
+```
   
-■cmakeが古い場合はアップグレードする  
+##### ■cmakeが古い場合はアップグレードする  
   
 まず、既にaptなどでcmakeをインストールしてしまっている場合は、アンインストールしましょう。  
 sudo apt purge cmake  
@@ -47,7 +47,7 @@ tar xvf cmake-3.6.2.tar.gz
   
 echo 'export PATH=$HOME/cmake-3.6.2/bin/:$PATH' >> ~/.bashrc  
   
-■ OpenCVの古いバージョンをアンインストールする  
+##### ■ OpenCVの古いバージョンをアンインストールする  
   
 cd ~/src/cpp/opencv/build  
 sudo make install  
