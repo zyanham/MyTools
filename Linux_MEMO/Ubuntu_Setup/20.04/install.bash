@@ -96,3 +96,8 @@ cd Vitis-AI_v2.0/setup/alveo
 source ./install.sh
 cd ../mpsoc/VART
 ./host_cross_compiler_setup.sh
+
+
+## Docker TEX
+sudo docker pull paperist/texlive-ja:latest
+
