@@ -33,6 +33,9 @@ sudo apt -y install libhdf5-dev doxygen
 # For Network Env.
 sudo apt-get -y install iperf3 alien netperf dkms ethtool
 
+# For Etc.
+sudo apt-get -y install gtkterm
+
 ## Python Pip setup
 sudo -H pip3 install -U pip
 pip3 install opencv-python
