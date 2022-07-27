@@ -30,6 +30,9 @@ sudo apt -y install libopencore-amrnb-dev libopencore-amrwb-dev libavresample-de
 sudo apt -y install libprotobuf-dev protobuf-compiler libgoogle-glog-dev libgflags-dev libgphoto2-dev libeigen3-dev
 sudo apt -y install libhdf5-dev doxygen
 
+# For Network Env.
+sudo apt-get -y install iperf3 alien netperf
+
 ## Python Pip setup
 sudo -H pip3 install -U pip
 pip3 install opencv-python
