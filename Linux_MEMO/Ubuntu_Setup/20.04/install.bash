@@ -31,7 +31,7 @@ sudo apt -y install libprotobuf-dev protobuf-compiler libgoogle-glog-dev libgfla
 sudo apt -y install libhdf5-dev doxygen
 
 # For Network Env.
-sudo apt-get -y install iperf3 alien netperf
+sudo apt-get -y install iperf3 alien netperf dkms ethtool
 
 ## Python Pip setup
 sudo -H pip3 install -U pip
