@@ -25,7 +25,7 @@ sudo apt-get -y install libpython3.8-dev python3 python3-numpy python3-scipy pyt
 sudo apt-get -y install libopenblas-dev liblapacke-dev python3-pip python3-dev
 sudo apt-get -y install pkg-config python-h5py ipython graphviz python-opencv
 sudo apt-get -y install cmake-qt-gui qtbase5-dev libopencv-dev libeigen3-dev python2.7 cython cython3
-sudo apt-get -y install libcublas9.1 curl libjasper1 yasm libxine2-dev libv4l-dev swig
+sudo apt-get -y install libcublas9.1 curl libjasper1 yasm libxine2-dev libv4l-dev swig libtinfo5
 
 
 ## For GStreamer
