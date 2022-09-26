@@ -36,6 +36,10 @@ sudo apt-get -y install iperf3 alien netperf dkms ethtool
 # For Etc.
 sudo apt-get -y install gtkterm
 
+# Install Chrome
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb  
+sudo dpkg -i google-chrome-stable_current_amd64.deb
+
 ## Python Pip setup
 sudo -H pip3 install -U pip
 pip3 install opencv-python
@@ -95,13 +99,13 @@ mv bdf AVNET_bdf
 
 
 ## Vitis AI Setup
-cd ~/Desktop
-git clone -b v2.0 https://github.com/Xilinx/Vitis-AI.git
-mv Vitis-AI Vitis-AI_v2.0
-cd Vitis-AI_v2.0/setup/alveo
-source ./install.sh
-cd ../mpsoc/VART
-./host_cross_compiler_setup.sh
+##cd ~/Desktop
+##git clone -b v2.0 https://github.com/Xilinx/Vitis-AI.git
+##mv Vitis-AI Vitis-AI_v2.0
+##cd Vitis-AI_v2.0/setup/alveo
+##source ./install.sh
+##cd ../mpsoc/VART
+##./host_cross_compiler_setup.sh
 
 
 ## Docker TEX
