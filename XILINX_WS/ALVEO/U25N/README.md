@@ -9,6 +9,12 @@ Kernel Requirement :
 Open vSwitch機能 >= 4.15  
 Stateless Firewall機能 >= 5.5  
 OSVバージョン：2.12以降  
+
+[XILINX NIC Support](https://japan.xilinx.com/support/download/nic-software-and-drivers.html)  
+[U25N UserGuide](https://xilinx.github.io/U25N-SmartNIC-Solution/docs/build/html/index.html)  
+[U25N UserGuide Github](https://github.com/Xilinx/U25N-SmartNIC-Solution)  
+[Openonload Github](https://github.com/Xilinx-CNS/onload)
+[OpenNIC](https://github.com/Xilinx/open-nic)    
   
 ### セットアップメモ   
 
