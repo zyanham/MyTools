@@ -69,6 +69,12 @@ cd /usr/include/linux
 sudo ln -s -f ../libv4l1-videodev.h videodev.h
 cd ~
 
+## Japanese Emv Setup
+sudo apt install language-pack-ja-base language-pack-ja ibus-mozc
+sudo update-locale LANG=ja_JP.UTF8
+ibus restart
+gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'jp'), ('ibus', 'mozc-jp')]"
+
 ## OpenCV Install
 #cd
 #mkdir OpenCV_Build
