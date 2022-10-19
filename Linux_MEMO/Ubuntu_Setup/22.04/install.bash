@@ -21,7 +21,7 @@ sudo apt-get -y install libswscale-dev libjpeg-dev libpng++-dev libtiff5-dev lib
 sudo apt-get -y install libpython3.8-dev python3 python3-numpy python3-scipy python3-matplotlib libopenblas-dev
 sudo apt-get -y install liblapacke-dev python3-pip python3-dev pkg-config python3-h5py ipython3 graphviz python3-opencv
 sudo apt-get -y install cmake-qt-gui qtbase5-dev libopencv-dev docker docker.io libeigen3-dev cython3
-sudo apt-get -y install libcublas11 curl yasm libxine2-dev libv4l-dev swig libtinfo5
+sudo apt-get -y install libcublas11 curl yasm libxine2-dev libv4l-dev swig libtinfo5 libtinfo6
 
 ## For Gstreamer
 sudo apt -y install libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev libgtk2.0-dev libtbb-dev
