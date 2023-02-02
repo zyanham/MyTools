@@ -2,7 +2,7 @@
 update 2023/2/2　　
   
 #### 参考文献　　
-[Kria　KR260 Getting Started](https://japan.xilinx.com/products/som/kria/kr260-robotics-starter-kit/kr260-getting-started/getting-started.html)　　
+[Kria　KR260 Getting Started](https://japan.xilinx.com/products/som/kria/kr260-robotics-starter-kit/kr260-getting-started/getting-started.html)　　　
 [Kria　KR260 ロボティクススターターキット ユーザーガイド UG1092](https://docs.xilinx.com/r/ja-JP/ug1092-kr260-starter-kit)　　
 [Canonical Kria向けUbuntu 20.04配布ページ](https://ubuntu.com/download/amd-xilinx)　　
 [Image Writer Balena Etcher配布ページ](https://www.balena.io/etcher)　　
