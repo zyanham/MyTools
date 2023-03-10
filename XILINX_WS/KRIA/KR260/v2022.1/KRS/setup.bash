@@ -30,3 +30,9 @@ source /opt/ros/humble/setup.bash
 #ros2 run demo_nodes_cpp talker
 #ros2 run demo_nodes_py listener
 
+#########################################
+# Gazebo Classic Install Flow to Host PC
+#########################################
+curl -sSL http://get.gazebosim.org | sh
+
+
