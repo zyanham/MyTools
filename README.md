@@ -23,4 +23,8 @@ git add <ファイル名>
 git rm <ファイル名>  
 git pull origin master  
 git push  
+
+git config --global user.email "you@example.com"  
+git config --global user.name "Your Name"  
+
 ```
