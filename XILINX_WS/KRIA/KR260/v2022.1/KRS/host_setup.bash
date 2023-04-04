@@ -27,12 +27,20 @@ sudo apt install ros-humble-ros-base
 sudo apt install ros-dev-tools
 
 source /opt/ros/humble/setup.bash
-#ros2 run demo_nodes_cpp talker
-#ros2 run demo_nodes_py listener
+##ros2 run demo_nodes_cpp talker
+##ros2 run demo_nodes_py listener
 
 #########################################
 # Gazebo Classic Install Flow to Host PC
 #########################################
 curl -sSL http://get.gazebosim.org | sh
 
+###################################################
+# install cyclone DDS packages 
+###################################################
+sudo apt-get install ros-humble-rmw-cyclonedds-cpp ros-humble-cyclonedds* 
 
+###################################################
+# Switch from other rmw to rmw_cyclonedds by specifying the environment variable.
+###################################################
+export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
