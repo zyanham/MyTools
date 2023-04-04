@@ -37,7 +37,7 @@ sudo apt -y install gstreamer1.0-gl gstreamer1.0-gtk3 gstreamer1.0-qt5 gstreamer
 sudo apt-get -y install iperf3 alien netperf dkms ethtool
 
 ## For Etc.
-sudo apt-get -y install gtkterm
+sudo apt-get -y install gtkterm retext
 
 ## Install Chrome
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb  
