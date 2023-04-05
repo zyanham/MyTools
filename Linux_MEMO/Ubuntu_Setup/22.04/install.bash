@@ -33,6 +33,9 @@ sudo apt -y install gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreame
 sudo apt -y install gstreamer1.0-libav gstreamer1.0-tools gstreamer1.0-x gstreamer1.0-alsa
 sudo apt -y install gstreamer1.0-gl gstreamer1.0-gtk3 gstreamer1.0-qt5 gstreamer1.0-pulseaudio
 
+## For Cmake
+sudo apt-get -y install libidn11 libidn11-dev
+
 ## For Network Env.
 sudo apt-get -y install iperf3 alien netperf dkms ethtool
 
