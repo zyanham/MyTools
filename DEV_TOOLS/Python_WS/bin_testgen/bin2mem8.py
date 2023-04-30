@@ -12,6 +12,9 @@ args = parser.parse_args()
 infile  = open(args.arg1, 'rb')
 outfile = open(args.arg2, 'w', newline='')
 
+cnt=0
+temp_text=""
+
 if (args.offset) :
     offset=0
 else:
@@ -25,7 +28,14 @@ while True:
         break
 
     if(offset>3):
-        outfile.write(data+"\r\n")
+        if cnt == 7 :
+            temp_text = data + temp_text
+            outfile.write(temp_text+"\r\n")
+            temp_text = ""
+            cnt = 0
+        else :
+            temp_text = data + temp_text
+            cnt = cnt + 1
 
     offset=offset+1
 
