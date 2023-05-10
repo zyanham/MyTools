@@ -22,9 +22,9 @@ echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-a
 sudo apt update
 sudo apt upgrade
 
-sudo apt install ros-humble-desktop-full
-sudo apt install ros-humble-ros-base
-sudo apt install ros-dev-tools
+sudo apt install -y ros-humble-desktop-full
+sudo apt install -y ros-humble-ros-base
+sudo apt install -y ros-dev-tools
 
 source /opt/ros/humble/setup.bash
 ##ros2 run demo_nodes_cpp talker
@@ -38,7 +38,7 @@ curl -sSL http://get.gazebosim.org | sh
 ###################################################
 # install cyclone DDS packages 
 ###################################################
-sudo apt-get install ros-humble-rmw-cyclonedds-cpp ros-humble-cyclonedds* 
+sudo apt-get install -y ros-humble-rmw-cyclonedds-cpp ros-humble-cyclonedds* 
 
 ###################################################
 # Switch from other rmw to rmw_cyclonedds by specifying the environment variable.
