@@ -49,7 +49,8 @@ Petaliunx Package Groups -> packagegroup-petalinux-gstreamer -> packagegroup-pet
 petalinux-build
 petalinux-build --sdk
 
-
+petalinux-package --boot --u-boot --force
+petalinux-package --wic --images-dir images/linux/ --bootfiles "ramdisk.cpio.gz.u-boot,boot.scr,Image,system.dtb,system-zynqmp-sck-kr-g-revB.dtb" --disk-name "sda"
 
 #petalinux build file remove
 petalinux-build -x mrproper
