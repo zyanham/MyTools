@@ -45,26 +45,29 @@ def process_input_lines(input_lines, random_numbers):
     for line_index, line in enumerate(input_lines):
         output_lines.append(line)
 
-#        if inserted_count < len(random_numbers):
         if inserted_count == first_num :
-#            output_lines.append(str(random_numbers[inserted_count]) + '\n')
-#            print(str(inserted_count)+" "+str(first_num))
             if line.strip() == "SOP":
                 output_lines.extend("HDP\n")
-                output_lines.extend("HDP\n")
-                output_lines.append("EOP-INT\n")
-                output_lines.extend(["IT\n"] * random.randint(1, 5))
-                output_lines.append("SOP-INT\n")
-                output_lines.extend("HDP\n")
+                output_lines.extend("EOP-IOACK\n")
+                output_lines.extend("SOP-IOACK\n")
+                output_lines.extend("HDP-IOACK\n")
                 output_lines.extend("HDP\n")
             elif line.strip() == "HDP":
-                if prev_line == "SOP" :
-                    output_lines.extend("HDP\n")
-                    output_lines.extend("HDP\n")
-                output_lines.append("EOP-INT\n")
-                output_lines.extend(["IT\n"] * random.randint(1, 5))
-                output_lines.append("SOP-INT\n")
+                output_lines.extend("EOP-IOACK\n")
+                output_lines.extend("SOP-IOACK\n")
+                output_lines.extend("HDP-IOACK\n")
                 output_lines.extend("HDP\n")
+            elif line.strip() == "SOP-INT":
+                output_lines.extend("HDP\n")
+                output_lines.extend("EOP-IOACK\n")
+                output_lines.extend("SOP-IOACK\n")
+                output_lines.extend("HDP-IOACK\n")
+                output_lines.extend("HDP\n")
+            else: # IT EOP EOP-INT
+                output_lines.extend("SOP-IOACK\n")
+                output_lines.extend("HDP-IOACK\n")
+                output_lines.extend("EOP-IOACK\n")
+
             if random_numbers :
                 first_num = random_numbers[0]
                 random_numbers.pop(0)
@@ -77,15 +80,12 @@ def process_input_lines(input_lines, random_numbers):
     return output_lines
 
 def main():
-#    if len(sys.argv) < 5:
     if len(sys.argv) < 4:
         return
 
     input_file = sys.argv[1]
     output_file = sys.argv[2]
     num = int(sys.argv[3])
-#    range_max = int(sys.argv[4])
-
 
     input_lines = read_file(input_file)
     line_count = len(input_lines)
