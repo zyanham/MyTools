@@ -5,6 +5,7 @@ Digilent:
 >git clone https://github.com/Digilent/vivado-boards.git  
 AVNET:  
 >git clone https://github.com/Avnet/bdf.git  
+
   
 通常インストール時なら下記のパスにTCLを配置する。  
 > .Xilinx/Vivado/2021.1/Vivado_init.tcl  
