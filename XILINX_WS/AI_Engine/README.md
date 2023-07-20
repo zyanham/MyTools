@@ -27,4 +27,13 @@ Versalの開発にはVivadoのツールライセンスの他にAIEライセン�
 [AI Engine Blog](https://support.xilinx.com/s/question/0D52E00006xR6iXSAS/ai-engine-blog-series?language=en_US)
 
 ## ACRi
-[ACRi BLOG AI を加速する AI Engine アーキテクチャ解説と入門チュートリアル](https://www.acri.c.titech.ac.jp/wordpress/archives/13108)
+[ACRi BLOG AI を加速する AI Engine アーキテクチャ解説と入門チュートリアル](https://www.acri.c.titech.ac.jp/wordpress/archives/13108)  
+
+## MEMO  
+"${env_var:XILINX_VITIS}/aietools/include"  
+  
+adf_api_xrt  
+xrt_coreutil  
+  
+"${env_var:XILINX_VITIS}/aietools/lib/aarch64.o"  
+  
