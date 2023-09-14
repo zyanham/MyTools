@@ -32,7 +32,8 @@ sudo apt install ibus-mozc
 ibus restart  
 gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'jp'), ('ibus', 'mozc-jp')]"  
 ```
-
+# mozc-utils-gui をインストール
+sudo apt install -y mozc-utils-gui
 
 
 以降のセットアップはDesktopと同一
