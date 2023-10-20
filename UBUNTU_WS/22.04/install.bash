@@ -33,7 +33,7 @@ sudo apt-get -y install ocl-icd-opencl-dev opencl-headers openssh-server openssl
 sudo apt-get -y install pylint python2.7 python3 python3-dev python3-git python3-h5py python3-jinja2 python3-matplotlib
 sudo apt-get -y install python3-numpy python3-opencv python3-pexpect python3-pip python3-scipy qt5-default qtbase5-dev
 sudo apt-get -y install screen socat swig sysvinit-utils tar texinfo tftpd tofrodos unzip util-linux vim wget xinetd
-sudo apt-get -y install xterm xtrans-dev xz-utils yasm zlib1g zlib1g-dev zlib1g:i386
+sudo apt-get -y install xterm xtrans-dev xz-utils yasm zlib1g zlib1g-dev zlib1g:i386 mozc-utils-gui
 
 ## For Gstreamer
 sudo apt -y install doxygen gstreamer1.0-alsa gstreamer1.0-gl gstreamer1.0-gtk3 gstreamer1.0-libav
