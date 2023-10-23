@@ -8,7 +8,7 @@ source /opt/xilinx/xrt/setup.sh
 source /opt/Xilinx/Vitis/2022.2/settings64.sh
 source /opt/Petalinux2022.2/settings.sh
 
-git clone -b 3.0 https://github.com/Xilinx/Vitis-AI.git
+git clone -b v3.0 https://github.com/Xilinx/Vitis-AI.git
 mv Vitis-AI Vitis-AI_3.0
 
 mkdir Download
