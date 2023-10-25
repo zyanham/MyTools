@@ -4,9 +4,7 @@
 #Required:
 # - Vitis 2022.2
 # - XRT 2022.2
-# - zcu102 base platform 2022.2
 # - ZYNQMP common image 2022.2
-# - Vitis AI Library
 ################################
 
 #### USER SETUP AREA ####
@@ -33,6 +31,8 @@ cd Download
 #wget https://www.xilinx.com/bin/public/openDownload?filename=DPUCZDX8G_VAI_v3.0.tar.gz -O DPUCZDX8G_VAI_v3.0.tar.gz
 #tar -zxvf DPUCZDX8G_VAI_v3.0.tar.gz
 #mv DPUCZDX8G_VAI_v3.0 ../Vitis-AI_v3.5/DPU-TRD
+wget https://japan.xilinx.com/bin/public/openDownload?filename=vitis-ai-runtime-3.0.0.tar.gz -O  vitis-ai-runtime-3.0.0.tar.gz
+tar -zxvf vitis-ai-runtime-3.0.0.tar.gz
 cd ../
 
 if [ -d "./xilinx-zynqmp-common-v2022.2" ]; then
@@ -60,3 +60,4 @@ cp ../../Material/v3.0/compile_modelzoo.sh .
 
 cd ../
 ./docker_run.sh xilinx/vitis-ai-pytorch-cpu:latest
+
