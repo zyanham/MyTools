@@ -234,7 +234,7 @@ pip install numpy==1.20
 
 ```
 
-VitisAIのpytorch環境向け量子化ツール[vai_q_pytorch]」(https://docs.xilinx.com/r/ja-JP/ug1414-vitis-ai/Pytorch-%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3-vai_q_pytorch)をインストールする。  
+VitisAIのpytorch環境向け量子化ツール[vai_q_pytorch](https://docs.xilinx.com/r/ja-JP/ug1414-vitis-ai/Pytorch-%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3-vai_q_pytorch)をインストールする。  
 項目「ソースコードからインストール」を実施する。  
 ```
 #.bashrcに下記を記載する
