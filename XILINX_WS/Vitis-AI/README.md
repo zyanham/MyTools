@@ -1,46 +1,45 @@
-# Vitis AI 3.5
-
-[DPUの統合方法について](https://xilinx.github.io/Vitis-AI/3.5/html/docs/workflow-system-integration)  
+# Vitis AI 3.5 情報まとめ
+Vitis-AI v3.5で使用する流れについて情報をまとめています。  
   
-bashを実行する前にUbuntu22.04で下記のセットアップ  
+## 1.Vitis-AI LibraryのCNNをターゲットで実行するまで  
+DPUをデザインに統合する方法について[ここ](https://xilinx.github.io/Vitis-AI/3.5/html/docs/workflow-system-integration)に記載がある。  
+リファレンスデザインとIPが配布されており、DPUの統合方法でVivado Flow/Vitis Flowが紹介されている。  
+MPSOC対象のDPU v4.1はVivadoのIPにはデフォルトで含まれていない。ページからダウンロードしてIPのリポジトリを設定して使用する。  
+ここではZCU102をターゲットボードにVitis Flowを実行してDPUのリファレンスデザインを構築するところまでばsetup_3.5.bashにまとめています。
+  
+### bashを実行する前にUbuntu22.04で下記のインストールを実行してください。  
  - [Vitis 2022.2](https://japan.xilinx.com/support/download/index.html/content/xilinx/ja/downloadNav/vivado-design-tools/2022-2.html)  
  - [ZYNQMP common image 2022.2](https://japan.xilinx.com/support/download/index.html/content/xilinx/ja/downloadNav/embedded-platforms/2022-2.html)  
  - [XRT 2022.2](https://github.com/Xilinx/XRT/tree/2022.2)  
 
-ZYNQMP common imageをダウンロード＆解凍してワークディレクトリに置く。  
+ZYNQMP common imageはダウンロード＆解凍してbashのあるワークディレクトリに置いてください。
+XRTはbash実行時にインストールするようになっています。
 
-バッシュを実行する
+バッシュを実行します。
 ```  
 bash setup_3.5.bash  
 ```  
-
-このbashで下記を実施。所望出ない場合は適宜変更のこと。  
-- XRT 2022.2のインストール  
-- XRT/Vitis/Vivado 2022.2のパスを通す  
-- VitisAIのGithub v3.5ダウンロード  
-- ZYNQMP common imageの階層を展開  
-- DPU TRD ZCU102用プラットフォームを構築  
-- Vitis AIのpytorch/cpu Docker環境を構築  
-- AVNETのシェルcompile_modlzoo.shをmodelzooに配置  
+このbashで下記を実施します。不要な箇所がある場合は適宜変更して使ってください。  
+ - XRT 2022.2のインストール  
+ - XRT/Vitis/Vivado 2022.2のパスを通す  
+ - VitisAIのGithub v3.5ダウンロード  
+ - ZYNQMP common imageの階層を展開  
+ - DPU TRD ZCU102用プラットフォームを構築  
+ - Vitis AIのpytorch/cpu Docker環境を構築  
+ - AVNETのシェルcompile_modlzoo.sh、ZCU102のDPU情報arch.jsonをmodelzooに配置  
+このフローはDPU TRDのREADME記載のVitis Flowを元にしています。  
+model_zoo以下のmodel-listに含まれるディレクトリ群にはCNNの元データリンクがあります  
+docker上でcompile_modelzoo.shを実行するとmodel-listディレクトリに含まれるCNNに対してarch.jsonにあるDPUの情報を元にコンパイルを実行する。  
+arch.jsonにはfingerprintというDPUの構成を示すコードがあり、他のTRDに対してもこのコードがあっていれば逆算的にコンパイルをすることもできる  
+TRDの構築が終了したら、DPU-TRD/prj/Vitis/binary_container_1/sd_card.imgをSDに書き込んでください。  
   
-このフローはDPU TRDのREADME/Vitis Flowを元にしている。  
-model_zoo以下のmodel-listディレクトリに含まれるディレクトリにはmodel-zooに含まれるCNNの元データリンクがある  
-docker上でcompile_modelzoo.shを実行するとmodel-listディレクトリに含まれるCNNに対して
-arch.jsonにあるDPUの情報を元にコンパイルを実行する。  
-arch.jsonにはfingerprintというDPUの構成を示すコードがあり、  
-他のTRDに対してもこのコードがあっていれば逆算的にコンパイルをすることもできる  
-  
-DPU-TRD/prj/Vitis/binary_container_1/sd_card.imgをSDに書き込む  
-  
-Vitis AIを実行するにはターゲット側にVitis AIランタイムが必要。  
-Vitis AI v3.5ではMPSOCのDPUはv3.0からの変更はないのでv3.0の環境を引っ張る。  
-[ここ](https://docs.xilinx.com/r/3.0-%E6%97%A5%E6%9C%AC%E8%AA%9E/ug1414-vitis-ai/%E8%A9%95%E4%BE%A1%E3%83%9C%E3%83%BC%E3%83%89%E3%81%AB-Vitis-AI-%E3%83%A9%E3%83%B3%E3%82%BF%E3%82%A4%E3%83%A0%E3%82%92%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB)にVitisAIランタイムのインストールに関して解説がある。  
+Vitis AIを実行するにはターゲット側にVitis AIランタイムが必要です。  
+Vitis AI v3.5ではMPSOCのDPUはv3.0からの変更はないのでv3.0の環境を引っ張ります。  
+[ここ](https://docs.xilinx.com/r/3.0-%E6%97%A5%E6%9C%AC%E8%AA%9E/ug1414-vitis-ai/%E8%A9%95%E4%BE%A1%E3%83%9C%E3%83%BC%E3%83%89%E3%81%AB-Vitis-AI-%E3%83%A9%E3%83%B3%E3%82%BF%E3%82%A4%E3%83%A0%E3%82%92%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB)にVitisAIランタイムのインストールに関して解説があります。  
+これもbashでDownloadディレクトリを作成して展開するよう記載しています  
+ZCU102をSDカードから起動させたあと、ターゲット側に接続してDPU-TRD/appとvitis-ai-runtime-3.0.0.tar.gzを転送してください。  
 ```  
-wget https://japan.xilinx.com/bin/public/openDownload?filename=vitis-ai-runtime-3.0.0.tar.gz -O vitis-ai-runtime-3.0.0.tar.gz  
-```  
-bashにDownloadに展開するよう記載した  
-ターゲット側に接続してDPU-TRD/appとvitis-ai-runtime-3.0.0.tar.gzを転送する。  
-```  
+#ターゲットへファイル転送例 SCP
 scp <local file name> <転送先アドレス>  
 scp afile root@192.168.1.11:/home/.  
 ```  
@@ -66,3 +65,198 @@ mkdir /usr/share/vitis_ai_library/models
 cp <model name> /usr/share/vitis_ai_library/models  
 ```  
   
+## 2.NVIDIA GPUを使ったVitis-AI Libraryのyoloxをリトレーニングするまで  
+まずは、NVIDIA GPUの環境設定が必要に。  
+Ubuntu 22.04.3 LTS/RTX3060で構築した環境についてメモを記載する。  
+```  
+#GPUの所在を確認  
+lspci  
+> 08:00.0 VGA compatible controller: NVIDIA Corporation GA106 [GeForce RTX 3060] (rev a1)  
+  
+#デバイスが見つかったら下記コマンドで推奨ドライバを確認する  
+#すでに入っているものと差分があれば、アンインストールして入れ直す。
+ubuntu-drivers devices  
+> == /sys/devices/pci0000:00/0000:00:03.1/0000:08:00.0 ==
+> modalias : pci:v000010DEd00002503sv00001043sd000087F3bc03sc00i00
+> vendor   : NVIDIA Corporation
+> model    : GA106 [GeForce RTX 3060]
+> driver   : nvidia-driver-525-open - distro non-free
+> driver   : nvidia-driver-470-server - distro non-free
+> driver   : nvidia-driver-515 - third-party non-free
+> driver   : nvidia-driver-535-server-open - distro non-free
+> driver   : nvidia-driver-535 - third-party non-free
+> driver   : nvidia-driver-525 - third-party non-free
+> driver   : nvidia-driver-535-server - distro non-free
+> driver   : nvidia-driver-525-server - distro non-free
+> driver   : nvidia-driver-530 - third-party non-free
+> driver   : nvidia-driver-545 - third-party non-free
+> driver   : nvidia-driver-470 - distro non-free recommended
+> driver   : nvidia-driver-520 - third-party non-free
+> driver   : nvidia-driver-535-open - distro non-free
+> driver   : xserver-xorg-video-nouveau - distro free builtin
+
+nvidia-smi
+> Fri Oct 20 09:34:00 2023       
+> +---------------------------------------------------------------------------------------+
+> | NVIDIA-SMI 535.113.01             Driver Version: 535.113.01   CUDA Version: 12.2     |
+> |-----------------------------------------+----------------------+----------------------+
+> | GPU  Name                 Persistence-M | Bus-Id        Disp.A | Volatile Uncorr. ECC |
+> | Fan  Temp   Perf          Pwr:Usage/Cap |         Memory-Usage | GPU-Util  Compute M. |
+> |                                         |                      |               MIG M. |
+> |=========================================+======================+======================|
+> |   0  NVIDIA GeForce RTX 3060        Off | 00000000:08:00.0  On |                  N/A |
+> |ERR!   31C    P0              45W / 170W |    482MiB / 12288MiB |      0%      Default |
+> |                                         |                      |                  N/A |
+> +-----------------------------------------+----------------------+----------------------+
+>                                                                                          
+> +---------------------------------------------------------------------------------------+
+> | Processes:                                                                            |
+> |  GPU   GI   CI        PID   Type   Process name                            GPU Memory |
+> |        ID   ID                                                             Usage      |
+> |=======================================================================================|
+> |    0   N/A  N/A      2088      G   /usr/lib/xorg/Xorg                          271MiB |
+> |    0   N/A  N/A      2252      G   /usr/bin/gnome-shell                        102MiB |
+> |    0   N/A  N/A      2891      G   ...13649781,9920179312950581114,262144      100MiB |
+> +---------------------------------------------------------------------------------------+
+# Ubuntu22.04インストール時に3rd Partyのグラフィックドライバも入れたので、デフォルトでnvidia-smiが実行できた。
+# ここに記載あるCUDAバージョンはインストールされているものではなくて推奨なので別途CUDAもインストールする
+```  
+CUDAは[ここ](https://developer.nvidia.com/cuda-toolkit)から、あわせてCuDNNも[ここ](https://developer.nvidia.com/cudnn)からインストールする。  
+インストールが完了したら、動作確認を実施する。  
+```
+# CUDAコンパイラのバージョン確認
+nvcc --version
+> nvcc: NVIDIA (R) Cuda compiler driver
+> Copyright (c) 2005-2023 NVIDIA Corporation
+> Built on Fri_Sep__8_19:17:24_PDT_2023
+> Cuda compilation tools, release 12.3, V12.3.52
+> Build cuda_12.3.r12.3/compiler.33281558_0
+
+# CuDNN動作確認
+cp -r /usr/src/cudnn_samples_v8 .
+cd cudnn_samples_v8/
+ls
+> conv_sample  mnistCUDNN  multiHeadAttention  NVIDIA_SLA_cuDNN_Support.txt  RNN  RNN_v8.0  samples_common.mk
+cd RNN
+make
+> CUDA_VERSION is 12030
+> Linking agains cublasLt = true
+> CUDA VERSION: 12030
+> TARGET ARCH: x86_64
+> TARGET OS: linux
+> SMS: 50 53 60 61 62 70 72 75 80 86 87 90
+> ...
+./RNN
+> Executing: RNN
+> seqLength  = 20
+> numLayers  = 2
+> hiddenSize = 512
+> inputSize  = 512
+> miniBatch  = 64
+> dropout    = 0.000000
+> direction  = CUDNN_UNIDIRECTIONAL
+> mode       = CUDNN_RNN_RELU
+> algo       = CUDNN_RNN_ALGO_STANDARD
+> precision  = CUDNN_DATA_FLOAT
+>
+> Forward:   2 GFLOPS
+> Backward:   7 GFLOPS, (  7 GFLOPS), (  7 GFLOPS)
+> y checksum 1.315793E+06     hy checksum 1.315212E+05
+> dx checksum 6.676001E+01    dhx checksum 6.425049E+01
+> dw checksum 1.453738E+09
+> Output saved to result.txt
+#動いた。
+```
+
+[ここ](https://xilinx.github.io/Vitis-AI/3.5/html/docs/install/install.html#option-2-build-the-docker-container-from-xilinx-recipes)によると、
+Vitis−AI v3.5ではNVIDIA GPU環境は自分でDockerビルドしないといけない様子。  
+```  
+#GPUとpytorchターゲットでdockerbuildを実行する  
+cd docker  
+./docker_build.sh -t gpu -f pytorch  
+  
+#ビルドが終了したらワークディレクトリからDockerを呼び出す。  
+./docker_run_gpu.sh  
+#DockerのイメージIDがベタ書きになっているので、適宜直すこと  
+
+# Docker上でGPUを叩くには[nvidia-container-runtime](https://github.com/NVIDIA/nvidia-container-runtime)を入れる必要がある？  
+curl -s -L https://nvidia.github.io/nvidia-container-runtime/gpgkey | \  
+sudo apt-key add -　distribution=$(. /etc/os-release;echo $ID$VERSION_ID)  
+curl -s -L https://nvidia.github.io/nvidia-container-runtime/$distribution/nvidia-container-runtime.list | \  
+sudo tee /etc/apt/sources.list.d/nvidia-container-runtime.list  
+sudo apt-get update  
+sudo apt-get install nvidia-container-runtime  
+#次に下記Dockerリポジトリから任意のドライバイメージを持ってきてDocker RUNするとか  
+docker run --gpus all nvidia/cuda:11.3.1-cudnn8-runtime-ubuntu20.04 nvidia-smi  
+#nvidia-smiは実行できたが、DockerからGPUにアクセスできなかったので、まだなにか足りない？
+```  
+Docker上からGPUにアクセスできなかったので、通常の環境でVitis-AI Libraryを回す方針に変更。  
+
+[ここ](https://www.anaconda.com/download)からAnaconda3をインストールする。  
+ダウンロードできるのはシェルのみ。  
+```
+#Anacondaでダウンロードしたシェルを実行して、インストールする
+./Anaconda3-2023.09-0-Linux-x86_64.sh
+#Anacondaをインストールすると自動的に環境が立ち上がるようになる。
+
+conda activate <(Option) Enviroment Name>   #Anacondaのベース環境有効化
+conda deactivate                            #Anacondaのベース環境無効化
+conda config --set auto_activate_base true  #Anacondaの自動起動ON
+conda config --set auto_activate_base false #Anacondaの自動起動ON
+anaconda-navigator                          #AnacondaのGUIツール起動(仮想環境上で実行可能)
+conda install <app name>                    #Anaconda環境にインストールする
+
+```
+Anacondaを有効化して、anaconda-navigatorで”"pytorch-test"などの名前で生成する。  
+このとき、Pythonのバージョンを決定できるのでv3.8で生成。  
+  
+Vitis-AI_v3.5/model_zooで、model-listに含まれるpt_yolox-nano_3.5を残す。  
+compile_modelzoo.shを実行すると、もmodel.b4096ディレクトリにZCU102向けにコンパイルされた  
+DPU向けのモデルが生成される。  
+cacheディレクトリにpt_yolox-nano_3.5.zipが格納されており、そこにVitis AI Libraryの環境がある。  
+リトレーニング、量子化、評価などのスクリプトが含まれている。基本的にREADMEにそのネットワークの環境について記載がある  
+yolox-nanoをリトレーニングするにはCoCoDatasetというオープンデータのトレーニング用ファイル群が必要。  
+このトレーニングファイルを任意のものにすればユーザーのカスタムも可能だが、手順確認のためデフォルトのデータを使用する。  
+COCODATASETの[ダウンロードページ](https://cocodataset.org/#download)でダウンロードする。  
+ワークディレクトリにあるシェルを実行すると必要なファイルをDownloadディレクトリにダウンロードする。  
+```
+./coco_download.sh
+```
+これらをpt_yolox-nano_3.5/data/COCO以下に配置するとデータのセッティングは完了。  
+  
+以下の環境設定も追加  
+```
+#protobuf、numpyが新しすぎたのでインストールし直し。
+pip uninstall protobuf
+pip install protobuf==3.20.1
+pip uninstall numpy
+pip install numpy==1.20
+
+```
+
+VitisAIのpytorch環境向け量子化ツール[vai_q_pytorch]」(https://docs.xilinx.com/r/ja-JP/ug1414-vitis-ai/Pytorch-%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3-vai_q_pytorch)をインストールする。  
+項目「ソースコードからインストール」を実施する。  
+```
+#.bashrcに下記を記載する
+export CUDA_HOME=/usr/local/cuda
+cd Vitis-AI_v3.5/src/vai_quantizer/vai_q_pytorch
+pip install -r requirements.txt
+cd ./pytorch_binding 
+python setup.py install
+#インストールを検証する
+python -c "import pytorch_nndct"
+
+#pt_yolox-nano_3.5のルートディレクトリに移動して、環境設定を続ける。
+pip install --user -r requirements.txt 
+cd code
+pip install --user -v -e .
+cd ..
+#リトレーニングを実行する。
+bash code/run_train.sh
+
+```
+
+## 3.Vitis AI Optimizerを使うには
+v3.5でオープンソースとなり、ライセンスも不要となった。(ハズ)  
+メモを記載していく  
+★[ここ](https://docs.xilinx.com/r/en-US/ug1333-ai-optimizer/Vitis-AI-Optimizer-Overview)には運営にメールするか、ラウンジに入るように記載がある。
