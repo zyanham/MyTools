@@ -259,4 +259,54 @@ bash code/run_train.sh
 ## 3.Vitis AI Optimizerを使うには
 v3.5でオープンソースとなり、ライセンスも不要となった。(ハズ)  
 メモを記載していく  
-★[ここ](https://docs.xilinx.com/r/en-US/ug1333-ai-optimizer/Vitis-AI-Optimizer-Overview)には運営にメールするか、ラウンジに入るように記載がある。
+★[ここ](https://docs.xilinx.com/r/en-US/ug1333-ai-optimizer/Vitis-AI-Optimizer-Overview)には運営にメールするか、ラウンジに入るように記載がある。  
+  
+[VAI Optimizerの解説ページ](https://github.com/Xilinx/Vitis-AI/tree/master/src/vai_optimizer)  
+[VAI Optimizer Pytorch版の解説ページ](https://github.com/Xilinx/Vitis-AI/blob/master/src/vai_optimizer/pytorch_binding/pytorch_nndct/pruning/README.md)  
+  
+Vitis-AI Optimizerのチュートリアルは[ここ](https://github.com/Xilinx/Vitis-AI-Tutorials/tree/3.5/Tutorials/TF2-Vitis-AI-Optimizer/)にある  
+VAI Optimizerの説明書は[ここ](https://github.com/Xilinx/Vitis-AI/tree/v3.5/src/vai_optimizer)  
+VAI Optimizerはフレームワークごとにインストール方法が違う。このチュートリアルはTensorFlow2  
+- [VAI Optimizer Pytorch](https://github.com/Xilinx/Vitis-AI/blob/v3.5/src/vai_optimizer/pytorch_binding/pytorch_nndct/pruning/README.md)  
+- [VAI Optimizer TensorFlow](https://github.com/Xilinx/Vitis-AI/blob/v3.5/src/vai_optimizer/tensorflow_v1/README.md)  
+- [VAI Optimizer TensorFlow2](https://github.com/Xilinx/Vitis-AI/blob/v3.5/src/vai_optimizer/tensorflow/README.md)  
+  
+TensorFlow2のフローを踏襲  
+Anaconda環境(Python3.8)で環境構築を実施。  
+cd <work dir>/Vitis-AI/src/vai_optimizer/tensorflow  
+pip install -r requirements.txt  
+pip install tensorflow==2.12.0  
+export CUDA_HOME=/usr/local/cuda  
+python setup.py install  
+python setup.py develop  
+python -c "from tf_nndct import IterativePruningRunner"  
+  
+チュートリアルを開始  
+git clone -b 3.5 https://github.com/Xilinx/Vitis-AI-Tutorials.git  
+cd Vitis-AI-Tutorials/Tutorials/TF2-Vitis-AI-Optimizer  
+ここのREADMEに手順が記載されている。  
+  
+Vitis-AI以下にtutorialsディレクトリを作成してTF2-Vitis-AI-Optimizerディレクトリをコピーする  
+cd Vitis-AI  
+mkdir tutorials  
+cp -r <work dir>/TF2-Vitis-AI-Optimizer tutorials/  
+cd tutorials/TF2-Vitis-AI-Optimizer  
+  
+[Kaggleのデータセットをダウンロードする](https://www.kaggle.com/c/dogs-vs-cats/data)  
+アカウント登録、規約確認等実施してデータセットdogs-vs-cats.zipをダウンロードしたら、  
+アーカイブのままTF2-Vitis-AI-Optimizer/files/dogs-vs-cats_mobilenetv2に配置する。  
+  
+Step1.環境設定  
+cd scripts/  
+bash setup_env.sh  
+  
+export BUILD=./build_pr  
+export LOG=${BUILD}/logs  
+mkdir -p ${LOG}  
+export  TF_CPP_MIN_LOG_LEVEL=3  
+  
+Step.2 Kaggle データセットを TFRecord に変換する  
+python -u images_to_tfrec.py 2>&1 | tee ${LOG}/tfrec.log  
+  
+Step.3 初期トレーニング  
+python -u implement.py --mode train --build_dir ${BUILD} 2>&1 | tee ${LOG}/train.log  
