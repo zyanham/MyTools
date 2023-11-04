@@ -18,6 +18,11 @@ XRTはbash実行時にインストールするようになっています。
 バッシュを実行します。
 ```  
 bash setup_3.5.bash  
+
+# Docker Run Pattern MEMO
+./docker_run.sh xilinx/vitis-ai-pytorch-cpu:latest
+./docker_run.sh xilinx/vitis-ai-tensorflow2-cpu:latest
+./docker_run.sh xilinx/vitis-ai-tensorflow-cpu:latest
 ```  
 このbashで下記を実施します。不要な箇所がある場合は適宜変更して使ってください。  
  - XRT 2022.2のインストール  
@@ -310,3 +315,6 @@ python -u images_to_tfrec.py 2>&1 | tee ${LOG}/tfrec.log
   
 Step.3 初期トレーニング  
 python -u implement.py --mode train --build_dir ${BUILD} 2>&1 | tee ${LOG}/train.log  
+
+## 4.tiny-yolo3をTF2に移植する  
+[ここ](https://github.com/zzh8829/yolov3-tf2)のフローをそのまま使用。
