@@ -76,6 +76,11 @@ docker load < <読み込むイメージのファイル名>.tar
 
 # docker commitでコンテナをイメージに変換  
 docker commit <YOUR_CONTAINER_ID> <NAME>
+
+# dockerのコピーについて  
+docker cp <source> <destination>  
+docker cp <Container ID>:<Src PATH> <Dest PATH>  
+
 ```
 
 ### Dockerのネットワーク事情  
