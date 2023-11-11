@@ -2,8 +2,6 @@
 //  Hokuto_QuizApp.swift
 //  Hokuto_Quiz
 //
-//  Created by Yujiro Kaneko on 2023/11/11.
-//
 
 import SwiftUI
 
