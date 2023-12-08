@@ -316,7 +316,7 @@ python -u images_to_tfrec.py 2>&1 | tee ${LOG}/tfrec.log
 Step.3 初期トレーニング  
 python -u implement.py --mode train --build_dir ${BUILD} 2>&1 | tee ${LOG}/train.log  
 
-## 4.tiny-yolo3をBDD100KでとれーにんぐしてTF2に移植し、ZUBに移植するなど  
+## 4.tiny-yolo3をBDD100KでトレーニングしてTF2に移植し、ZUBに移植するなど  
 基本的なtiny-YOLOv3をBDD100Kでトレーニングするフローはここを参照した。  
 [YOLOv3をBDD100Kでトレーニングする](https://github.com/yogeshgajjar/BDD100k-YOLOV3-tiny)  
 
