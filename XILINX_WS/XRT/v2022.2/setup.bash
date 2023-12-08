@@ -1,6 +1,6 @@
 # /bin/bash
 
-git clone https://github.com/Xilinx/XRT.git
+git clone -b 2022.2 https://github.com/Xilinx/XRT.git
 cd XRT
 sudo ./src/runtime_src/tools/scripts/xrtdeps.sh
 cd build
