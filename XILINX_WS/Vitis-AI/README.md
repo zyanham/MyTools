@@ -316,5 +316,69 @@ python -u images_to_tfrec.py 2>&1 | tee ${LOG}/tfrec.log
 Step.3 初期トレーニング  
 python -u implement.py --mode train --build_dir ${BUILD} 2>&1 | tee ${LOG}/train.log  
 
-## 4.tiny-yolo3をTF2に移植する  
-[ここ](https://github.com/zzh8829/yolov3-tf2)のフローをそのまま使用。
+## 4.tiny-yolo3をBDD100KでとれーにんぐしてTF2に移植し、ZUBに移植するなど  
+基本的なtiny-YOLOv3をBDD100Kでトレーニングするフローはここを参照した。  
+[YOLOv3をBDD100Kでトレーニングする](https://github.com/yogeshgajjar/BDD100k-YOLOV3-tiny)  
+
+DarknetでBDD100Kを用いてリトレーニングを実施する。  
+BDD100Kのデータセット入手はサイトへの登録が必要。  
+BDDのサイトは[ここ](https://bdd-data.berkeley.edu/)  
+  
+道路上の想定の検知ターゲットが含まれている。  
+ 1:car  
+ 2:bus  
+ 3:person  
+ 4:bike  
+ 5:truck  
+ 6:motorcycle  
+ 7:train  
+ 8:rider  
+ 9:traffic sign  
+10:traffic light  
+  
+RTX3060を1台用いて、Darknetのmaxbatch=500000はトレーニング期間は約5日間となった。  
+トレーニング回数の目安は1class x 2000batchらしいので  
+maxbatchは10class x 2000batch = 200000batchでいいらしい。  
+
+続いて、DarknetをTF2に移植する手順は下記を参考にした  
+[Vitis™ AIを用いて、オープンソースのYOLOをKria™ KV260上で動かしてみた](https://www.paltek.co.jp/techblog/techinfo/230215_01)  
+keras-yolo3を用いてVitis-AI v2.5へのYOLOv3移植について解説している。  
+
+このフローでは下記のGithubのコンテンツを利用している。
+[keras-yolo3 YOLOv3をTensorflow2へ変換する試み](https://github.com/qqwweee/keras-yolo3)  
+  
+> git clone https://github.com/qqwweee/keras-yolo3.git  
+  
+weightをダウンロードする  
+> cd keras-yolo3  
+> wget https://pjreddie.com/media/files/yolov3-tiny.weights  
+  
+anaconda環境を作成する(anacondaは要事前インストール)  
+> conda create -n yolo python=3.7  
+> conda activate yolo  
+> conda install tensorflow-gpu==1.13.1 keras==2.2.4 pillow matplotlib  
+> pip install opencv-python  
+> conda install h5py==2.10.0  
+> python convert.py yolov3-tiny.cfg yolov3-tiny.weights model_data/yolov3-tiny.h5  
+  
+紆余曲折ありコンパイルできた  
+コンパイル時にはcfgファイルに含まれる"Training"をコメントアウトする。  
+  
+引き続きkerasへの移植を実施して無事にコンパイル完了  
+この手順では評価用のスクリプトを実行する。これは量子化後に一部の画像データで  
+精度を測定する機構が入っているが、量子化が実行されれば特にここは気にせずにすすめてOK  
+  
+####  
+bash 候補フロー  
+> git clone -b v3.5 https://github.com/Xilinx/Vitis-AI.git  
+  
+  
+## 5.Vitis AIでKR260にDPUを統合する方法？  
+調査中  
+[Kria KR260-DPU-TRD-VIVADO flow Vitis AI 3.0 Tutorial](https://www.hackster.io/LogicTronix/kria-kr260-dpu-trd-vivado-flow-vitis-ai-3-0-tutorial-0085fd)  
+  
+## 6.Darknetのアノテーションを半自動化する方法？  
+調査中  
+[darknetでyoloのデータセット作成を半自動化する](https://qiita.com/k65c1/items/7e8034c05829e701d120)  
+  
+
