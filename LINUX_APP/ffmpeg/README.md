@@ -9,7 +9,12 @@ ffmpeg -i <input> -vf scale=-1:480 <output>
 
 # 動画から静止画を抜き出す  
 ffmpeg -i <input> -ss <start_sec> -t <end_sec> -r <image_num/sec> -f image2 <%03d>.jpg  
-例) ffmpeg -i IMG_2468.MOV -r 1 IMG_2468_%05d.jpg  
+Ex) ffmpeg -i IMG_2468.MOV -r 1 IMG_2468_%05d.jpg  
+
+
+# 連番静止画から動画を作成する
+ffmpeg -i <input> -vcodec <codec name> -q:v 1 <output>
+Ex) ffmpeg -r 25 -i ./TEST01_%05d.jpg -vcodec libx264 -q:v 1 TEST06.mp4
 
 # 動画の品質を変えずにファイル形式を変える  
 ffmpeg -i TEST.MOV -q:v 1 TEST.mp4  
