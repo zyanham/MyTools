@@ -92,6 +92,9 @@ vitis-ai-library-dbgは選択しない
   
 > petalinux-package --wic --images-dir images/linux/ --bootfiles "ramdisk.cpio.gz.u-boot,boot.scr,Image,system.dtb,system-zynqmp-sck-kv-g-revB.dtb" --disk-name "mmcblk1" --wic-extra-args "-c gzip"  
   
+もしKR260の場合  
+> petalinux-package --wic --images-dir images/linux/ --bootfiles "ramdisk.cpio.gz.u-boot,boot.scr,Image,system.dtb,system-zynqmp-sck-kr-g-revB.dtb" --disk-name "sda" --wic-extra-args "-c gzip"  
+  
 > cd ../../  
 > mkdir kv260_prj  
 > cd kv260_prj  
