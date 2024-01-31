@@ -24,7 +24,7 @@ Petalinux 2022.2
 DPU ARCH ... B512, B800, B1024, B1152, B1600, B2304, B3136, B4096  
 [参考](https://docs.xilinx.com/r/en-US/pg338-dpu?tocId=3xsG16y_QFTWvAJKHbisEw)  
 
-'''  
+```  
 dict set dict_prj dict_sys prj_name                  {KV260}  
 dict set dict_prj dict_sys prj_part                  {xck26-sfvc784-2LV-c}  
 dict set dict_prj dict_sys prj_board                 {KV260}  
@@ -33,14 +33,16 @@ dict set dict_prj dict_param  DPU_NUM                {1}
 dict set dict_prj dict_param  DPU_ARCH               {1024}  
 dict set dict_prj dict_param  DPU_SFM_NUM            {0}  
 dict set dict_prj dict_param  DPU_URAM_PER_DPU       {50}  
-'''  
+```  
   
 > vim base/trd_bd.tcl  
-'''  
+
+```  
 dict set dict_prj dict_param HP_CLK_MHz        {274}  
-'''  
+```  
   
 > vivado -source trd_prj.tcl  
+  
 Settingsを開いて、Project Device->Vision AI Starter Kit選択  
 Bitstreamタブの-bin_fileチェックする  
 Report IP Statusを開いて、IPをアップデートする  
@@ -67,21 +69,22 @@ cp -r ../../../../../../../meta-user/* .
   
 vim conf/user-rootfsconfig  
   
-'''  
+```  
 CONFIG_vitis-ai-library  
 CONFIG_vitis-ai-library-dev  
 CONFIG_vitis-ai-library-dbg  
-'''  
+```  
   
 > vim conf/petalinuxbsp.conf  
   
-'''  
+```  
 IMAGE_INSTALL:append = " vitis-ai-library "  
 IMAGE_INSTALL:append = " vitis-ai-library-dev "  
 IMAGE_INSTALL:append = " resnet50 "  
-'''  
+```  
   
 > petalinux-config -c rootfs  
+
 vitis-ai-library-dbgは選択しない
   
 > cd ../../  
@@ -93,7 +96,7 @@ vitis-ai-library-dbgは選択しない
 > mkdir kv260_prj  
 > cd kv260_prj  
 > xsct  
-> createdts -hw ../hw/prj/top_wrapper.xsa -zocl -platform-name KV260 -git-branch xlnx_rel_v2022.2 -overlay -compile -out ./kv260_dt  
+> createdts -hw ../hw/prj/top_wrapper.xsa -zocl -platform-name KV260 -git-branch  xlnx_rel_v2022.2 -overlay -compile -out ./kv260_dt  
 > exit  
 > mkdir kv260_b1024  
 > dtc -@ -O dtb -o ./kv260_b1024/kv260.dtbo ./kv260_dt/kv260_dt/KV260/psu_cortexa53_0/device_tree_domain/bsp/pl.dtsi  
