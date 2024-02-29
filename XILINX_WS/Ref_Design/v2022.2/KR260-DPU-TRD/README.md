@@ -3,7 +3,7 @@ https://xilinx.github.io/Vitis-AI/3.0/html/docs/workflow-system-integration.html
 wget https://www.xilinx.com/bin/public/openDownload?filename=DPUCZDX8G.tar.gz -O DPUCZDX8G.tar.gz  
 tar -zxvf DPUCZDX8G.tar.gz  
   
-## DTC  _
+## DTC  
 mkdir step2_dtc  
 cd step2_dtc  
 source /mnt/EXTDSK/Xilinx/Vitis/2022.2/settings64.sh  
