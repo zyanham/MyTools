@@ -1,10 +1,9 @@
-  
+# KR260 v2022.2 VAI3.0 TRD立ち上げ  
 https://xilinx.github.io/Vitis-AI/3.0/html/docs/workflow-system-integration.html#vitis-ai-dpu-ip-and-reference-designs  
 wget https://www.xilinx.com/bin/public/openDownload?filename=DPUCZDX8G.tar.gz -O DPUCZDX8G.tar.gz  
 tar -zxvf DPUCZDX8G.tar.gz  
   
-  
-##DTC  _
+## DTC  _
 mkdir step2_dtc  
 cd step2_dtc  
 source /mnt/EXTDSK/Xilinx/Vitis/2022.2/settings64.sh  
@@ -13,7 +12,7 @@ createdts -hw ../step1_vivado/build/vivado/prj/system_wrapper.xsa -zocl -platfor
   
 dtc -@ -O dtb -o prj.dtbo prj/prj/prj/psu_cortexa53_0/device_tree_domain/bsp/pl.dtsi  
   
-##Petalinux  
+## Petalinux  
 mkdir step3_petalinux
 cd step3_petalinux
 petalinux-upgrade -u "http://petalinux.xilinx.com/sswreleases/rel-v2022/sdkupdate/2022.2"  
@@ -63,6 +62,7 @@ petalinux-build --sdk
 cd images/linux  
 ./sdk.sh  
   
+## Vitis Platform , Vitis App  
 cd ../../  
 mkdir step4_pfm  
 cd step4_pfm  
