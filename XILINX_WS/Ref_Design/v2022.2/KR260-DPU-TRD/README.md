@@ -1,20 +1,25 @@
   
 https://xilinx.github.io/Vitis-AI/3.0/html/docs/workflow-system-integration.html#vitis-ai-dpu-ip-and-reference-designs  
 wget https://www.xilinx.com/bin/public/openDownload?filename=DPUCZDX8G.tar.gz -O DPUCZDX8G.tar.gz  
+tar -zxvf DPUCZDX8G.tar.gz  
   
-<DTC>  
+  
+##DTC  _
+mkdir step2_dtc  
+cd step2_dtc  
 source /mnt/EXTDSK/Xilinx/Vitis/2022.2/settings64.sh  
 xsct  
 createdts -hw ../step1_vivado/build/vivado/prj/system_wrapper.xsa -zocl -platform-name prj -git-branch xlnx_rel_v2022.2 -overlay -compile -out prj  
   
 dtc -@ -O dtb -o prj.dtbo prj/prj/prj/psu_cortexa53_0/device_tree_domain/bsp/pl.dtsi  
   
-<Petalinux>  
+##Petalinux  
+mkdir step3_petalinux
+cd step3_petalinux
 petalinux-upgrade -u "http://petalinux.xilinx.com/sswreleases/rel-v2022/sdkupdate/2022.2"  
-petalinux-create -t project -s xilinx-kv260-starterkit-v2022.2-10141622.bsp --name dpuOS  
+petalinux-create -t project -s xilinx-kr260-starterkit-v2022.2-10141622.bsp --name dpuOS  
 cd dpuOS  
-  
-#petalinux-config --get-hw-description=../../step1_vivado/build/vivado/prj/  
+petalinux-config --get-hw-description=../../step1_vivado/build/vivado/prj/  
 #Image Packaging ConfigurationRoot filesystem typeEXT4 (SD/eMMC/SATA/USB)  
   
 FPGA Manager-> FPGA Manager [enable]  
@@ -52,7 +57,7 @@ Filesystem Packages -> base -> dnf
   
 petalinux-build  
 petalinux-package --boot --u-boot --force  
-petalinux-package --wic --images-dir images/linux/ --bootfiles "ramdisk.cpio.gz.u-boot,boot.scr,Image,system.dtb,system-zynqmp-sck-kv-g-revB.dtb" --disk-name "mmcblk1"  
+petalinux-package --wic --images-dir images/linux/ --bootfiles "ramdisk.cpio.gz.u-boot,boot.scr,Image,system.dtb,system-zynqmp-sck-kr-g-revB.dtb" --disk-name "mmcblk1"  
   
 petalinux-build --sdk  
 cd images/linux  
