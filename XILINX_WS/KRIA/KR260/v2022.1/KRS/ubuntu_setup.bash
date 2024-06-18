@@ -18,6 +18,19 @@ sudo apt-get -y install curl build-essential libssl-dev git wget \
                           python3-colcon-common-extensions python3-colcon-mixin \
                           kpartx u-boot-tools pv gcc-multilib
 sudo apt-get -y install gcc-aarch64-linux-gnu g++-aarch64-linux-gnu
+sudo apt-get install qemu-user-static
+sudo apt-get install ros-humble-gazebo-ros ros-humble-gazebo-plugins ros-humble-gazebo-msgs
+
+sudo apt install ros-humble-ament-cmake*
+sudo apt install ros-humble-camera-info-manager*
+sudo apt install ros-humble-image-publisher*
+sudo apt install opencl*
+sudo apt install ros-humble-image-*
+sudo apt install ros-humble-dolly*
+sudo apt install ros-humble-rosidl*
+sudo apt install ros-humble-ros2*
+sudo apt-get install ros-humble-launch*
+sudo apt install ros-humble-adaptive-component*
 
 ###################################################
 # 2. create a new ROS 2 workspace with examples and
@@ -42,7 +55,7 @@ repositories:
 
   firmware/acceleration_firmware_kr260:
     type: zip
-    url: https://github.com/ros-acceleration/acceleration_firmware_kr260/releases/download/v1.0.0/acceleration_firmware_kr260.zip
+    url: https://github.com/ros-acceleration/acceleration_firmware_kr260/releases/download/v1.1.1/acceleration_firmware_kr260.zip
 
   acceleration/adaptive_component:
     type: git
@@ -59,11 +72,11 @@ repositories:
   acceleration/colcon-hardware-acceleration:
     type: git
     url: https://github.com/colcon/colcon-hardware-acceleration
-    version: main
+    version: humble
   acceleration/ros2_kria:
     type: git
     url: https://github.com/ros-acceleration/ros2_kria
-    version: main
+    version: humble
   acceleration/ros2acceleration:
     type: git
     url: https://github.com/ros-acceleration/ros2acceleration
@@ -94,39 +107,27 @@ source /opt/ros/humble/setup.bash  # Sources system ROS 2 installation.
 # vary (e.g. ~/ros2_humble/ros2-linux).
 export PATH="/usr/bin":$PATH  # FIXME: adjust path for CMake 3.5+
 
+sudo ls -l # Hack to give sudo access to shell, else build may hang.
 colcon build --merge-install  # about 18 mins in an AMD Ryzen 5 PRO 4650G
+
+WS=$PWD
+sudo ln -s ${WS}/acceleration/firmware/kr260/sysroots/aarch64-xilinx-linux/usr/lib/aarch64-linux-gnu/libpython3.10.so.1.0 /usr/lib/aarch64-linux-gnu/libpython3.10.so
 
 ###################################################
 # 6. source the overlay to enable all features
 ###################################################
 source install/setup.bash
 
-###################################################
-# 6.B workaround for KR260 additional firmware elements
-#   see https://github.com/Xilinx/KRS/issues/62#issue-1292007180
+# select KR260 firmware artifacts and re-build accelerators targeting KR260 build configuration
+colcon acceleration select kr260
+
+####################################################
+## 7.A cross-compile and generate ONLY CPU binaries
+####################################################
+#colcon build --build-base=build-kr260-ubuntu --install-base=install-kr260-ubuntu --merge-install --mixin kr260 --cmake-args -DNOKERNELS=true
 #
-# TODO: remove this once these artifacts are added to KR260
-#   firmware ROS package (acceleration_firmware_kr260)
-###################################################
-# fetch KV260 firmware
-cd ~/krs_ws
-wget https://www.xilinx.com/bin/public/openDownload?filename=acceleration_firmware_kv260.zip -P src/firmware/acceleration_firmware_kv260
-unzip src/firmware/acceleration_firmware_kv260/openDownload\?filename\=acceleration_firmware_kv260.zip -d src/firmware/acceleration_firmware_kv260/
+####################################################
+## 7.B cross-compile and generate CPU binaries and accelerators.
+####################################################
+colcon build --executor sequential --event-handlers console_direct+ --build-base=build-kr260-ubuntu --install-base=install-kr260-ubuntu --merge-install --mixin kr260 --cmake-args -DNOKERNELS=false
 
-# deploy KV260 firmware
-colcon build --merge-install --packages-select acceleration_firmware_kv260
-
-# select KV260 firmware artifacts and re-build accelerators targeting KR260 build configuration
-source install/setup.bash
-colcon acceleration select kv260
-
-
-###################################################
-# 7.A cross-compile and generate ONLY CPU binaries
-###################################################
-colcon build --build-base=build-kr260-ubuntu --install-base=install-kr260-ubuntu --merge-install --mixin kr260 --cmake-args -DNOKERNELS=true
-
-###################################################
-# 7.B cross-compile and generate CPU binaries and accelerators
-###################################################
-colcon build --build-base=build-kr260-ubuntu --install-base=install-kr260-ubuntu --merge-install --mixin kr260
