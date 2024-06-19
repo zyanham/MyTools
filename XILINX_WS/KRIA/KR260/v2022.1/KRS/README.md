@@ -35,6 +35,16 @@ host_setup.bashにまとめてあるので、実行します
 > bash host_setup.bash
 ```  
 
+
+GAZEBOのインストールを確認するにはコマンドで呼び出して見るだけ
+```  
+> gazebo  
+```  
+GUIが立ち上がったら成功  
+  
+スクリプト内でCyclone DDSのセットアップも実施しています  
+  
+### PC上におけるROS2間のノード通信テスト
 ROS2がインストールできたか確認するには
 まずターミナルを２個用意して、ROSのセットアップを読み込む
 ```  
@@ -49,15 +59,6 @@ ROS2がインストールできたか確認するには
 # Terminal 2
 > ros2 run demo_nodes_py listener
 ```  
-
-次にGAZEBOのインストールを確認するにはコマンドで呼び出して見るだけ
-```  
-> gazebo
-```  
-GUIが立ち上がったら成功  
-  
-Cyclone DDSのセットアップも実施しています  
-  
   
 ***  
 ## Yocto/Petalinuxフロー  
@@ -68,9 +69,15 @@ Yocto/PetaLinux を使用してロボット OS を作成するためのビルド
 
 https://drive.google.com/file/d/1gzrGHB-J_fKNBmcGYhClXdWo6wGw8k43/view?usp=sharing  
 
-
+↑リンク切れしたまま。(24/6/19現在)
 
 
 ***  
 ## Ubuntu 22.04フロー  
 ここではKRS+Ubuntu22.04+MPSOCの環境を構築する確認をします。
+
+KRSのインストールページにあるままでは足りず、少しインストールを足したもbashを実行  
+（合成含め数時間かかった。）
+```  
+bash ubuntu_setup.bash 
+```  
