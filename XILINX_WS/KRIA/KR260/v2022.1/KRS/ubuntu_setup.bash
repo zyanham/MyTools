@@ -99,7 +99,7 @@ vcs import src --recursive < krs_humble.repos  # about 3 mins in an AMD Ryzen 5 
 ###################################################
 # 5. build the workspace and deploy firmware for hardware acceleration
 ###################################################
-source /opt/Xilinx/Vitis/2022.1/settings64.sh  # source Xilinx tools
+source /mnt/EXTDSK/Xilinx/Vitis/2022.1/settings64.sh  # source Xilinx tools
 source /opt/ros/humble/setup.bash  # Sources system ROS 2 installation.
 
 # Note: The path above is valid if one installs ROS 2 from a pre-built debian
