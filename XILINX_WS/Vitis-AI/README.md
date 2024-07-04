@@ -381,4 +381,45 @@ bash 候補フロー
 調査中  
 [darknetでyoloのデータセット作成を半自動化する](https://qiita.com/k65c1/items/7e8034c05829e701d120)  
   
+## 7.YOLOXをKV260上でうごかしたい。  
+  
+> ./docker_run.sh xilinx/vitis-ai-pytorch-gpu:3.5.0.001-7a0d5a695  
+  
+> cd model_zoo  
+  
+[こちら](https://github.com/Xilinx/Vitis-AI/blob/master/model_zoo/model-list/pt_yolox-nano_3.5/model.yaml)を参照してもらう。  
+> wget -O pt_yolox-nano_3.5.zip https://www.xilinx.com/bin/public/openDownload?filename=pt_yolox-nano_3.5.zip  
+> unzip pt_yolox-nano_3.5.zip  
+> cd pt_yolox-nano_3.5/float  
+> mv yolox_nano.pth yolox_nano.pth_org  
 
+[YOLOX](https://github.com/Megvii-BaseDetection/YOLOX)のページから学習済みネットワークをダウンロードする  
+>  
+> wget -O yolox_tiny.pth https://github.com/Megvii-BaseDetection/YOLOX/releases/download/0.1.1rc0/yolox_tiny.pth  
+> wget -O yolox_nano.pth https://github.com/Megvii-BaseDetection/YOLOX/releases/download/0.1.1rc0/yolox_nano.pth  
+> wget -O yolox_s.pth https://github.com/Megvii-BaseDetection/YOLOX/releases/download/0.1.1rc0/yolox_s.pth  
+> wget -O yolox_m.pth https://github.com/Megvii-BaseDetection/YOLOX/releases/download/0.1.1rc0/yolox_m.pth  
+> wget -O yolox_l.pth https://github.com/Megvii-BaseDetection/YOLOX/releases/download/0.1.1rc0/yolox_l.pth  
+> wget -O yolox_x.pth https://github.com/Megvii-BaseDetection/YOLOX/releases/download/0.1.1rc0/yolox_x.pth  
+> wget -O yolox_darknet.pth https://github.com/Megvii-BaseDetection/YOLOX/releases/download/0.1.1rc0/yolox_darknet.pth  
+> cd ../data  
+> wget http://images.cocodataset.org/zips/val2017.zip -O val2017.zip  
+> wget http://images.cocodataset.org/annotations/annotations_trainval2017.zip -O annotations_trainval2017.zip
+> wget http://images.cocodataset.org/zips/test2017.zip -O test2017.zip
+> unzip val2017.zip -d COCO/  
+> unzip test2017.zip -d COCO/
+> unzip val2017.zip -d COCO/
+> cd ../code  
+> pip install --upgrade pip  
+> pip uninstall numpy scipy  
+> pip install numpy==1.24.2 scipy==1.9.3  
+> pip install -r requirements.txt
+
+run_quant.shのパスが相対パスになっており、コードが読み込めない部分がある。  
+CFG=を絶対パスに修正。  
+#CFG=code/exps/example/custom/yolox_nano_deploy_relu_q.py  
+CFG=/workspace/model_zoo/pt_yolox-nano_3.5/code/exps/example/custom/yolox_nano_deploy_relu_q.py  
+  
+> pip install yolox  
+> source run_quant.sh  
+> 
