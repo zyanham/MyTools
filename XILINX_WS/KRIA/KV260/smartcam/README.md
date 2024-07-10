@@ -47,6 +47,8 @@ Ubuntuの機能(DISKアプリ)で実行可能->32gb程度が最適。
 #### SmartCamera(回路)を呼び出す  
 > sudo xmutil unloadapp  
 > sudo xmutil loadapp kv260-smartcam  
+  
+#### SmartCamera(アプリ)を呼び出す  
 > docker pull xilinx/smartcam:2022.1  
 > bash docker_run.bash  
 > cd /opt/xilinx/kv260-smartcam/bin  
