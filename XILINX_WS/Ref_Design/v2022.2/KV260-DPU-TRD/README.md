@@ -13,17 +13,10 @@ dtc -@ -O dtb -o prj.dtbo prj/prj/prj/psu_cortexa53_0/device_tree_domain/bsp/pl.
 petalinux-upgrade -u "http://petalinux.xilinx.com/sswreleases/rel-v2022/sdkupdate/2022.2"  
 petalinux-create -t project -s xilinx-kv260-starterkit-v2022.2-10141622.bsp --name dpuOS  
 cd dpuOS  
-  
-#petalinux-config --get-hw-description=../../step1_vivado/build/vivado/prj/  
-#Image Packaging ConfigurationRoot filesystem typeEXT4 (SD/eMMC/SATA/USB)  
-  
+petalinux-config --get-hw-description=../../step1_vivado/build/vivado/prj/  
 FPGA Manager-> FPGA Manager [enable]  
 Image Packaging Configuration -> Copy final images to tftpboot [disable]  
 EXIT  
-  
-#<plnx-proj-root>/project-spec/meta-user/conf/petalinuxbsp.conf に次の行を追加します  
-#IMAGE_FSTYPES:remove = "cpio cpio.gz cpio.bz2 cpio.xz cpio.lzma cpio.lz4 cpio.gz.u-boot"  
-#IMAGE_FSTYPES_DEBUGFS:remove = "cpio cpio.gz cpio.bz2 cpio.xz cpio.lzma cpio.lz4 cpio.gz.u-boot"  
   
 petalinux-config -c kernel  
 Device Drivers --> Misc devices --> <*> Xilinux Deep learning Processing Unit (DPU) Driver  
@@ -37,7 +30,6 @@ cp ../../../Vitis-AI/src/vai_petalinux_recipes/recipes-vitis-ai . -r
 rm resipes-vitis-ai/vart/vart_3.0_vivado.bb  
   
 vim conf/user-rootfsconfig  
-  
 CONFIG_vitis-ai-library  
 CONFIG_vitis-ai-library-dev  
 CONFIG_vitis-ai-library-dbg  
