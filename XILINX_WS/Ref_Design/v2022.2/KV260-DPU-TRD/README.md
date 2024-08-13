@@ -19,7 +19,7 @@ Image Packaging Configuration -> Copy final images to tftpboot [disable]
 EXIT  
   
 petalinux-config -c kernel  
-Device Drivers --> Misc devices --> <*> Xilinux Deep learning Processing Unit (DPU) Driver  
+Device Drivers --> Misc devices --> <*> Xilinux Deep learning Processing Unit (DPU) Driver   
 EXIT  
   
 cd project-spec/meta-user  
