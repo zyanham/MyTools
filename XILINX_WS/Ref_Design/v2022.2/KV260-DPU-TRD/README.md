@@ -9,7 +9,8 @@ createdts -hw ../step1_vivado/build/vivado/prj/system_wrapper.xsa -zocl -platfor
   
 dtc -@ -O dtb -o prj.dtbo prj/prj/prj/psu_cortexa53_0/device_tree_domain/bsp/pl.dtsi  
   
-<Petalinux>  
+## Petalinux  
+  
 petalinux-upgrade -u "http://petalinux.xilinx.com/sswreleases/rel-v2022/sdkupdate/2022.2"  
 petalinux-create -t project -s xilinx-kv260-starterkit-v2022.2-10141622.bsp --name dpuOS  
 cd dpuOS  
