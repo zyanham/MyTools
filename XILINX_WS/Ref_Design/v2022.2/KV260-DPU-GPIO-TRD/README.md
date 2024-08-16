@@ -2,6 +2,11 @@
 GPIOをKV260 DPUデザインから出す方法について。  
 VIVADO/Vitis 2022.2 Petalinux 2022.2  
   
+  
+## 1.VivadoProjectを作成する  
+```  
+> mkdir step1_vivado  
+```  
 Create Projcet : prj  
 Board : kv260 connector  
   
@@ -73,51 +78,114 @@ set_property IOSTANDARD  LVCMOS33 [get_ports "pmod_tri_io[7]"];
   
 ビットストリームを作成し、Export Hardwareを実施してXSAファイルを作成する。  
   
-Petalinux  
-ここからBSPをダウンロードする。  
+
+## 2.DTC環境構築  
+デバイスツリーを作成する  
+ワークディレクトリを作成してそこでファイル生成を実施する。  
+```  
+mkdir step2_dtc  
+cd step2_dtc  
+source /mnt/EXTDSK/Xilinx/Vitis/2022.2/settings64.sh  
+xsct #XSCTを起動する。  
+createdts -hw ../step1_vivado/build/vivado/prj/system_wrapper.xsa -zocl -platform-name prj -git-branch xlnx_rel_v2022.2 -overlay -compile -out prj  
+exit #XSCTを終了する。  
+dtc -@ -O dtb -o prj.dtbo prj/prj/prj/psu_cortexa53_0/device_tree_domain/bsp/pl.dtsi  
+```  
+  
+
+## 3.Petalinux環境構築  
+[ここから](https://www.xilinx.com/member/forms/download/xef.html?filename=xilinx-kr260-starterkit-v2022.2-10141622.bsp)BSPをダウンロードする。  
   
 プロジェクトを作成する。  
   
+後ほど使用するのでワークスペースのルートディレクトリにVitisAIとDPU IPをダウンロードしておく。  
+```  
+git clone https://github.com/Xilinx/Vitis-AI.git -b v3.0  
+  wget https://www.xilinx.com/bin/public/openDownload?filename=DPUCZDX8G.tar.gz -O DPUCZDX8G.tar.gz  
   
-petalinux-create --type project -s --name  
-petalinux-create --type project -s ./xilinx-kr260-starterkit-v2022.2-10141622.bsp --name kr260_test  
+```
+次にPetalinuxのワークディレクトリを作成して、ビルドを実施する。  
+```  
+mkdir step3_petalinux  
+cd step3_petalinux  
+petalinux-upgrade -u "http://petalinux.xilinx.com/sswreleases/rel-v2022/sdkupdate/2022.2"  
+petalinux-create -t project -s xilinx-kv260-starterkit-v2022.2-10141622.bsp --name dpuOS  
+cd dpuOS  
 petalinux-config --get-hw-description=../../step1_vivado/project_1/  
+```  
   
-Enable FPGA Manager under FPGA Manager.  
-Change Root filesystem type to INITRD  
-Change INITRAMFS/INITRD Image name to petalinux-initramfs-image  
-Disable Copy final images to tftpboot  
+Petalinux-conigで下記を設定する  
+・Enable FPGA Manager under FPGA Manager.  
+・Disable Copy final images to tftpboot  
+終了したらセーブを実施。  
   
-セーブを実施。  
-  
+```  
 petalinux-config -c kernel  
-Under Device Drivers > I2C support > I2C Hardware Bus support, enable  
-　Cadence I2C Controller  
-　Xilinx I2C Controller  
-　 petalinux-config -c rootfs  
-Under Filesystem Packages > base > i2c-tools, enable  
-i2c-tools  
-i2c-tools-dev  
+```
+Kernel設定では下記を設定する  
+Device Drivers --> Misc devices --> <*> Xilinux Deep learning Processing Unit (DPU) Driver  
+終了したらセーブを実施。  
   
+次にRootfsの準備を実施する。  
+先ほどダウンロードしたVitis-AIのディレクトリから必要なファイルをコピーする。(下記は例)  
+```  
+cd project-spec/meta-user  
+cp ../../../Vitis-AI/src/vai_petalinux_recipes/recipes-vitis-ai . -r  
+rm resipes-vitis-ai/vart/vart_3.0_vivado.bb  
+  
+```  
+user-rootfsconfigを編集してVitis AI Libraryのインストール準備を実施する。  
+```  
+vim conf/user-rootfsconfig  
+```  
+このファイルの末尾に下記を追加する  
+```  
+CONFIG_vitis-ai-library  
+CONFIG_vitis-ai-library-dev  
+CONFIG_vitis-ai-library-dbg  
+```  
+rootfsの設定を実施する。  
+```  
+petalinux-config -c rootfs  
+```  
+rootfsの設定は下記。  
+vitis-ai-libraryを選択  
+packagegroup -> gstreamer,opencv,pythonmodules,self-hosted,v4lutils,vitis-acceleration,x11  
+Filesystem Packages -> misc gcc-runtime  
+Filesystem Packages -> libs -> xrt,zocl  
+Filesystem Packages -> base -> dnf  
+  
+PetalinuxのビルドとSDカードイメージの作成  
+```
 petalinux-build  
-petalinux-package --wic --images-dir images/linux/ --bootfiles "ramdisk.cpio.gz.u-boot, boot.scr, Image, system.dtb, system-zynqmp-sck-kr-g-revB.dtb" --disk-name "sda"  
+
+petalinux-package --wic --images-dir images/linux/ --bootfiles "ramdisk.cpio.gz.u-boot,boot.scr,Image,system.dtb,system-zynqmp-sck-kv-g-revB.dtb" --disk-name "mmcblk1"
   
+```
 WicをSDカードに書き込む  
+Petalinux SDKを展開する。  
+```  
+petalinux-build --sdk  
+cd images/linux  
+./sdk.sh  
+```  
   
-mkdir step3_dtc  
-cd step3_dtc  
-xsct  
-createdts -hw ../step1_vivado/project_1/system_wrapper.xsa -zocl -platform-name kr260 -git-branch xlnx_rel_v2022.2 -overlay -compile -out ./kr260_dt  
-exit  
-dtc -@ -O dtb -o ./kr260.dtbo ./kr260_dt/kr260_dt/kr260/psu_cortexa53_0/device_tree_domain/bsp/pl.dtsi  
-  
+## 4.VitisによるDPU構築  
+cd ../../  
+mkdir step4_pfm  
+cd step4_pfm  
+mkdir boot sd_dir  
 cd ../  
-mkdir step4_package  
-cd step4_package  
-cp ../step3_dtc/kr260.dtbo .  
-echo '{ "shell_type" : "XRT_FLAT", "num_slots": "1" }' > shell.json  
-cp ../step1_vivado/project_1/system_wrapper.bit kr260.bit.bin  
+vitis -workspace ./step4_pfm  
   
+## 5.Package  
+cd ../  
+mkdir step5_package  
+cd step5_package  
+cp ../step2_dtc/kr260.dtbo .  
+echo '{ "shell_type" : "XRT_FLAT", "num_slots": "1" }' > shell.json  
+  
+## 6.Run  
 cd ../  
 scp -r ./step4_package petalinux@192.168.11.44:~/.  
   
