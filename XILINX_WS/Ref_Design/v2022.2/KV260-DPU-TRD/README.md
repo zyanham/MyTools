@@ -15,7 +15,7 @@ petalinux-upgrade -u "http://petalinux.xilinx.com/sswreleases/rel-v2022/sdkupdat
 petalinux-create -t project -s xilinx-kv260-starterkit-v2022.2-10141622.bsp --name dpuOS  
 cd dpuOS  
 petalinux-config --get-hw-description=../../step1_vivado/build/vivado/prj/  
-FPGA Manager-> FPGA Manager -> enable
+FPGA Manager-> FPGA Manager -> enable  
 Image Packaging Configuration -> Copy final images to tftpboot -> disable  
 EXIT  
   
