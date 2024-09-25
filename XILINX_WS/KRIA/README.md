@@ -5,8 +5,8 @@
 ```  
 > sudo snap install xlnx-config --classic --channel=2.x  
 > xlnx-config.sysinit
-> sudo apt-get install update
-> sudo apt-get install upgrade
+> sudo apt-get update
+> sudo apt-get upgrade
 > sudo apt-get install xlnx-firmware-kv260*
 ```  
 
