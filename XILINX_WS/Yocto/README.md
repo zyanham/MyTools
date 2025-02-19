@@ -9,6 +9,7 @@
   
 [meta-xilinx](https://github.com/Xilinx/meta-xilinx)  
 [yocto manifest](https://github.com/Xilinx/yocto-manifests)  
+[meta-AMD adaptible SoCs](https://github.com/Xilinx/meta-amd-adaptive-socs/tree/rel-v2024.2)
 
 ```  
 wicを書き込む方法  
