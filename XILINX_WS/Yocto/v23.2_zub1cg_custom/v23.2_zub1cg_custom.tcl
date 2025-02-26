@@ -23,9 +23,6 @@
 # 2. The following source(s) files that were local or imported into the original project.
 #    (Please see the '$orig_proj_dir' and '$origin_dir' variable setting below at the start of the script)
 #
-#    "/home/shinko/MyTools/XILINX_WS/Yocto/v23.2_zub1cg_custom_try2/v23.2_zub1cg_custom/v23.2_zub1cg_custom.srcs/sources_1/new/LED_chika.v"
-#    "/home/shinko/MyTools/XILINX_WS/Yocto/v23.2_zub1cg_custom_try2/v23.2_zub1cg_custom/v23.2_zub1cg_custom.srcs/constrs_1/new/zub1cg.xdc"
-#
 # 3. The following remote source files that were added to the original project:-
 #
 #    <none>
