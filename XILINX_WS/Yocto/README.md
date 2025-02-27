@@ -15,6 +15,8 @@ Yocto Project公式情報
 [yocto manifest](https://github.com/Xilinx/yocto-manifests)  
 [meta-AMD adaptible SoCs](https://github.com/Xilinx/meta-amd-adaptive-socs/tree/rel-v2024.2)
 
+参考:  
+[Workflow Decoupling Docs](https://github.com/Xilinx/workflow-decoupling-docs) 
 
 
 ```  
