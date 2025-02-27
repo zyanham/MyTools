@@ -19,7 +19,10 @@ Yocto Project公式情報
 
 ```  
 wicを書き込む方法  
-> dd if=petalinux-sdimage.wic of=/dev/sd<X> conv=fsync
+> sudo dd if=petalinux-sdimage.wic of=/dev/sd<X> conv=fsync
+> sudo parted /dev/sd<X> resizepart 2 100%  
+> sudo e2fsck -f /dev/<device partition 2>  
+> sudo resize2fs /dev/<device partition 2>  
 ```  
   
 [参考PALTEK Tech Blog](https://www.paltek.co.jp/techblog/techinfo/240626_01) 
