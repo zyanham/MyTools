@@ -14,7 +14,7 @@ bitbake-layers add-layer $ROOT/sources/meta-example
 
 echo "require conf/machine/zcu102-zynqmp.conf" > $ROOT/sources/meta-example/conf/machine/example-zcu102-zynqmp.conf
 echo 'HDF_BASE = "file://"' >> $ROOT/sources/meta-example/conf/machine/example-zcu102-zynqmp.conf
-echo 'HDF_PATH = "./zcu102_custom/zcu102_custom.xpr"' >> $ROOT/sources/meta-example/conf/machine/example-zcu102-zynqmp.conf
+echo 'HDF_PATH = "../zcu102_custom/system_wrapper.xsa"' >> $ROOT/sources/meta-example/conf/machine/example-zcu102-zynqmp.conf
 
 cat << EOF > ../sources/meta-example/recipes-bsp/device-tree/device-tree.bbappend
 FILESEXTRAPATHS:prepend := "${THISDIR}/files:"   
@@ -43,5 +43,4 @@ cat << EOF > ../sources/meta-example/recipes-bsp/device-tree/files/system-user.d
 EOF
 
 MACHINE=example-zcu102-zynqmp bitbake petalinux-image-minimal
-
 
