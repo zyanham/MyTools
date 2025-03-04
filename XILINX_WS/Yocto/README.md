@@ -25,6 +25,9 @@ wicを書き込む方法
 > sudo parted /dev/sd<X> resizepart 2 100%  
 > sudo e2fsck -f /dev/<device partition 2>  
 > sudo resize2fs /dev/<device partition 2>  
+  
+メモリを確認するならFreeコマンド  
+> free -m  
 ```  
   
 [参考PALTEK Tech Blog](https://www.paltek.co.jp/techblog/techinfo/240626_01) 
