@@ -38,4 +38,4 @@ try02_v24.2_vek280_min    -> 試行2:最小構成のvek280向けビルド(v2024.
 try03_v24.2_zcu102_min    -> 試行3:最小構成のzcu102向けビルド(v2024.2)  
 try04_v23.2_zcu102_custom -> 試行4:最小構成のzcu102に加えてFPGA回路情報を含めてbuild(v2023.2)  
 try05_v23.2_zub1cg_custom -> 試行5:カスタムボード向けzynqmp-genericと、FPGA回路情報含めてbuild(v2023.2)  
-
+try06_v24.2_vek280_custom -> 試行6:最小構成のVEK280向けビルドいろいろ(v2024.2)  
