@@ -9,23 +9,23 @@ sudo apt install --no-install-recommends git cmake ninja-build gperf ccache dfu-
 
 ## Get Zephyr and install Python dependencies
 sudo apt install python3-venv
-python3 -m venv ~/zephyrproject/.venv
-source ~/zephyrproject/.venv/bin/activate
+python3 -m venv zephyr_env
+source zephyr_env/bin/activate
 pip install west
-west init ~/zephyrproject
-cd ~/zephyrproject
+west init ./zephyrproject
+cd ./zephyrproject
 west update
 west zephyr-export
 west packages pip --install
 
 ## Install the Zephyr SDK
-cd ~/zephyrproject/zephyr
+cd ./zephyrproject/zephyr
 west sdk install
 
 ## Build the Blinky Sample
-cd ~/zephyrproject/zephyr
-west build -p always -b <your-board-name> samples/basic/blinky
+#cd ~/zephyrproject/zephyr
+#west build -p always -b <your-board-name> samples/basic/blinky
 
 ## Flash the Sample
-west flash
+#west flash
 
