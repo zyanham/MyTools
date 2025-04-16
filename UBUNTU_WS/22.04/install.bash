@@ -8,11 +8,6 @@ sudo apt install exfat-fuse exfatprogs
 ## apt command Package update
 sudo dpkg --add-architecture i386  
 sudo dpkg-reconfigure dash
-sudo add-apt-repository "deb http://security.ubuntu.com/ubuntu xenial-security main"  
-
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com --recv-keys 40976EAF437D05B5
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com --recv-keys 3B4FE6ACC0B21F32
-
 sudo apt-get update
 sudo apt-get upgrade  
 
