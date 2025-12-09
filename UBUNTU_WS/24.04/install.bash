@@ -6,11 +6,15 @@ sudo apt -y install exfatprogs
 
 ################################
 ################################
+sudo dpkg --add-architecture i386  
+sudo dpkg-reconfigure dash
+sudo apt-get update
+sudo apt-get upgrade  
 
 ### For Japanese Env
-sudo apt-get -y install language-pack-ja-base language-pack-ja ibus-mozc
-ibus restart
-gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'jp'), ('ibus', 'mozc-jp')]"
+#sudo apt-get -y install language-pack-ja-base language-pack-ja ibus-mozc
+#ibus restart
+#gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'jp'), ('ibus', 'mozc-jp')]"
 
 ### For Petalinux etc..
 sudo apt-get -y install g++ gawk gcc gcc-multilib git gnupg google-perftools graphviz gzip haveged imagemagick
@@ -66,6 +70,10 @@ sudo apt-get -y install gtkterm retext
 #pip3 install slidingwindow
 #pip3 install scipy
 #pip3 install numpy
+
+### For HuggingFace
+sudo apt install git-lfs
+git lfs install
 
 ##############################
 ##############################
