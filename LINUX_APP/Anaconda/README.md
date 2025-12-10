@@ -1,4 +1,4 @@
-i# Anaconda / conda コマンド あんちょこ  
+# Anaconda / conda コマンド あんちょこ  
   
 ## 0. 前提  
   
@@ -18,8 +18,9 @@ conda config --show
   
 # conda 本体のアップデート  
 conda update conda  
-  
+```  
 ## 2.環境回り  
+```bash
 # env_name という名前で Python 3.10 の環境を作成  
 conda create -n env_name python=3.10  
   
@@ -34,9 +35,9 @@ source activate env_name
   
 # 無効化（どのOSでも共通）  
 conda deactivate  
-  
-## パッケージ操作  
-  
+```  
+## 3.パッケージ操作  
+```bash  
 # 現在の環境に numpy をインストール  
 conda install numpy  
   
@@ -60,9 +61,9 @@ conda list
   
 # 名前で検索  
 conda search numpy  
-  
+```  
 ## 4.環境のエクスポート/再現  
-  
+```bash  
 # 現在の環境を environment.yml に書き出し  
 conda env export > environment.yml  
   
@@ -74,4 +75,4 @@ conda env create -f environment.yml
   
 # 既存環境を YAML に合わせて更新  
 conda env update -f environment.yml  
-  
+```  
