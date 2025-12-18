@@ -17,7 +17,14 @@ conda --version
 conda config --show  
   
 # conda 本体のアップデート  
-conda update conda  
+conda update conda
+
+# baseの自動起動を止める  
+conda config --set auto_activate_base false
+
+# baseの自動起動を再開する  
+conda config --set auto_activate_base true
+
 ```  
 ## 2.環境回り  
 ```bash
