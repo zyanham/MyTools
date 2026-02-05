@@ -11,7 +11,7 @@ Ryzen AI Max+395 GMKtecでお試し
 
   [Cmake](https://cmake.org/download/)の4.2.3をインストール  
   [miniforge](https://github.com/conda-forge/miniforge/releases/tag/25.11.0-1)の25.11.0-1をインストール。
-  　環境変数のPATHパスも通す。
+  　環境変数のPATHパスも通す。  
      - path\to\miniforge3\condabin  
      - path\to\miniforge3\Scripts\  
      - path\to\miniforge3\  
@@ -21,6 +21,9 @@ Ryzen AI Max+395 GMKtecでお試し
   再起動  
 
   [Ryzen AI Software](https://ryzenai.docs.amd.com/en/latest/inst.html)をインストールする。  
+  
+#### Miniforge起動  
+  > conda activate ryzen-ai-1.7.0  
   > cd Program Files\RyzenAI\1.7.0\quicktest  
   > python quicktest.py  
 
