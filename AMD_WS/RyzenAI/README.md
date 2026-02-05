@@ -32,3 +32,7 @@ Using TXN FORMAT 0.1
 2026-02-05 17:50:09.7313369 [W:onnxruntime:, pass_main.cpp:250 pass_main.cpp] skip mmap in sg: 2. runner libgraph-engine.so not support mmap
 Test Passed  
 ```  
+
+#### NPUチュートリアル開始  
+[チュートリアル](https://ryzenai.docs.amd.com/en/latest/examples.html)お試ししてみよう。  
+  
