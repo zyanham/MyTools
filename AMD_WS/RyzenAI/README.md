@@ -1,5 +1,7 @@
 ### Ryzen AI Softwareを試す
 
+Ryzen AI Max+395 GMKtecでお試し  
+
 以下、v1.7.0の操作メモ  
 [公式ドキュメント](https://ryzenai.docs.amd.com/en/latest/)  
 
