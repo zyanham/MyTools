@@ -22,11 +22,11 @@
   > cd Program Files\RyzenAI\1.7.0\quicktest  
   > python quicktest.py  
 
-'''  
+```  
 2026-02-05 17:50:08.3362844 [W:onnxruntime:, RedundantOpReductionPass.cpp:846 RedundantOpReductionPass.cpp] xir::Op{name = (/avgpool/GlobalAveragePool_output_0_Mul_vaip_163), type = qlinear-pool}'s input and output is unchanged, so it will be removed.  
 2026-02-05 17:50:08.5243856 [W:onnxruntime:, PartitionPass.cpp:12507 PartitionPass.cpp] xir::Op{name = (output)_replaced_input236, type = dequantize-linear} is partitioned to CPU as :  doesn't supported by target [AMD_AIE2P_4x8_CMC_Overlay].  
 INFO: [aiecompiler 77-749] Reading logical device aie2p_8x4_device  
 Using TXN FORMAT 0.1  
 2026-02-05 17:50:09.7313369 [W:onnxruntime:, pass_main.cpp:250 pass_main.cpp] skip mmap in sg: 2. runner libgraph-engine.so not support mmap
 Test Passed  
-'''  
+```  
