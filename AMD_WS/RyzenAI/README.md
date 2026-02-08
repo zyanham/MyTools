@@ -39,3 +39,7 @@ Test Passed
 #### NPUチュートリアル開始  
 [チュートリアル](https://ryzenai.docs.amd.com/en/latest/examples.html)お試ししてみよう。  
   
+Ryzen AI SWのリポジトリをクローンする必要があるので、[Git for Windows](https://gitforwindows.org/)をインストールしよう  
+> git clone https://github.com/amd/RyzenAI-SW.git -b v1.7.0
+
+v2.53.0をインストール  
