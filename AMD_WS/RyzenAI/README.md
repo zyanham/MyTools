@@ -45,3 +45,28 @@ v2.53.0をインストール
 
 > git clone https://github.com/amd/RyzenAI-SW.git -b v1.7.0
 
+#### 1.Getting Started Tutorial  
+[Getting Started Tutorial for INT8 models](https://ryzenai.docs.amd.com/en/latest/getstartex.html)  
+CIFAR-10 datasetを使ったINT8モデル試験  
+
+Miniforgeプロンプトを起動  
+Step1. Package Install
+> cd RyzenAI-SW/CNN-examples/getting_started_resnet/int8  
+> conda create --name resnet_env --clone ryzen-ai-1.7.0  
+> conda activate resnet_env  
+> python -m pip install -r requirements.txt
+
+[CIFAR-10 データセット]([https://www.cs.toronto.edu/~kriz/cifar.html](https://www.kaggle.com/competitions/cifar-10))をダウンロードするよ  
+  
+
+Step2.Prepare dataset and ONNX model  
+> python prepare_model_data.py  
+Step3.Quantize  
+> python resnet_quantize.py  
+Step4.Deploy Model  
+
+CPU Deploy  
+> python predict.py  
+
+Ryzen AI NPU Deploy  
+> python predict.py --ep npu
