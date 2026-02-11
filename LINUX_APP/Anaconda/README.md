@@ -25,6 +25,9 @@ conda config --set auto_activate_base false
 # baseの自動起動を再開する  
 conda config --set auto_activate_base true
 
+# 環境名の確認
+conda info --env  
+
 ```  
 ## 2.環境回り  
 ```bash
@@ -41,7 +44,11 @@ conda activate env_name
 source activate env_name  
   
 # 無効化（どのOSでも共通）  
-conda deactivate  
+conda deactivate
+
+# 環境の削除  
+conda remove --name myenv --all  
+
 ```  
 ## 3.パッケージ操作  
 ```bash  
