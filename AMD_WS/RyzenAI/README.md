@@ -7,7 +7,7 @@ Ryzen AI Max+395 GMKtecでお試し
 
 #### インストール開始  
 ・Visual Studio Community 2026をインストール    
-　C++デスクトップ開発のインストールを実施する
+　「C++デスクトップ開発」「MSVC v143 - VS 2022 C++ x64/x86 build tools」「Windows11 SDK」のインストールを実施する
 
   [Cmake](https://cmake.org/download/)の4.2.3をインストール  
   [miniforge](https://github.com/conda-forge/miniforge/releases/tag/25.11.0-1)の25.11.0-1をインストール。
@@ -70,6 +70,14 @@ Step4.Deploy Model
 ##### Ryzen AI NPU Deploy  
 > python predict.py --ep npu
 
+##### Install vcpkg & Eigen3  
+> cd $rootdir  
+> git clone https://github.com/microsoft/vcpkg.git  
+> cd vcpkg  
+> bootstrap-vcpkg.bat  
+> vcpkg install eigen3:x64-windows
+> vcpkg list | findstr eigen3
+
 ##### Deploy CPP  
 RyzenWSへ移動してOpenCV環境を実行  
 > cd $rootdir  
@@ -81,4 +89,4 @@ RyzenWSへ移動してOpenCV環境を実行
 
 ##### Resnet C++サンプルビルド  
 > cd getting_started_resnet/int8/cpp  
-> cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DBUILD_SHARED_LIBS=OFF -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DCMAKE_CONFIGURATION_TYPES=Release -A x64 -T host=x64 -DCMAKE_INSTALL_PREFIX=. -DCMAKE_PREFIX_PATH=. -B build -S resnet_cifar -DOpenCV_DIR="C:/opencv/build" -G "Visual Studio 18 2026"  
+> cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DBUILD_SHARED_LIBS=OFF -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DCMAKE_CONFIGURATION_TYPES=Release -A x64 -T host=x64 -DCMAKE_INSTALL_PREFIX=. -DCMAKE_PREFIX_PATH=. -B build -S resnet_cifar -DOpenCV_DIR="C:/opencv" -G "Visual Studio 18 2026"  
