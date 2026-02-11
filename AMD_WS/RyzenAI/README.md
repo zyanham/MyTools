@@ -74,11 +74,11 @@ Step4.Deploy Model
 RyzenWSへ移動してOpenCV環境を実行  
 > cd $rootdir  
 > git clone https://github.com/opencv/opencv.git -b 4.6.0  
-> cd opencv
+> cd opencv  
 > cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DBUILD_SHARED_LIBS=OFF -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DCMAKE_CONFIGURATION_TYPES=Release -A x64 -T host=x64 -G "Visual Studio 18 2026" "-DCMAKE_INSTALL_PREFIX=C:\opencv" "-DCMAKE_PREFIX_PATH=C:\opencv" -DCMAKE_BUILD_TYPE=Release -DBUILD_opencv_python2=OFF -DBUILD_opencv_python3=OFF -DBUILD_WITH_STATIC_CRT=OFF -B build  
 > cmake --build build --config Release  
 > cmake --install build --config Release  
 
 ##### Resnet C++サンプルビルド  
-> cd getting_started_resnet/int8/cpp
+> cd getting_started_resnet/int8/cpp  
 > cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DBUILD_SHARED_LIBS=OFF -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DCMAKE_CONFIGURATION_TYPES=Release -A x64 -T host=x64 -DCMAKE_INSTALL_PREFIX=. -DCMAKE_PREFIX_PATH=. -B build -S resnet_cifar -DOpenCV_DIR="C:/opencv/build" -G "Visual Studio 18 2026"  
