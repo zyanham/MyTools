@@ -22,6 +22,7 @@ Compile and build the code:
 > cmake --build . --config Release  
 > cd bin\Release  
 > .\example.exe -m "..\Llama-2-7b-chat-hf-awq-g128-int4-asym-fp16-onnx-hybrid"  
-※Issue 332で報告されている RyzenAI 1.7.0+Hybridモデルでスタックバッファオーバーランでプロセス終了する。  
+※[Issue 332](https://github.com/amd/RyzenAI-SW/issues/332)で報告されている RyzenAI 1.7.0+Hybridモデルでスタックバッファオーバーランでプロセス終了する。  
 
 ### 
+
