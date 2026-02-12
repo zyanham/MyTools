@@ -90,3 +90,46 @@ RyzenWSへ移動してOpenCV環境を実行
 ##### Resnet C++サンプルビルド  
 > cd getting_started_resnet/int8/cpp  
 > cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DBUILD_SHARED_LIBS=OFF -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DCMAKE_CONFIGURATION_TYPES=Release -A x64 -T host=x64 -DCMAKE_INSTALL_PREFIX=. -DCMAKE_PREFIX_PATH=. -B build -S resnet_cifar -DOpenCV_DIR="C:/opencv" -G "Visual Studio 18 2026"  
+
+#### BF16版のResnet NPU試験  
+cd RyzenAI-SW\CNN-examples\getting_started_resnet\bf16  
+conda create --name resnet_bf16 --clone ryzen-ai-1.7.0  
+conda activate resnet_bf16  
+
+##### Download Model and Dataset  
+python prepare_model_data.py  
+
+##### Model Compilation  
+python compile.py --model models\resnet_trained_for_cifar10.onnx  
+
+CPU実行  
+```  
+(resnet_bf16) C:\Users\Yujiro\Desktop\RyzenWS\RyzenAI-SW\CNN-examples\getting_started_resnet\bf16>python predict.py  
+execution started on CPU  
+Image 0: Actual Label cat, Predicted Label cat  
+Image 1: Actual Label ship, Predicted Label ship  
+Image 2: Actual Label ship, Predicted Label ship  
+Image 3: Actual Label airplane, Predicted Label airplane  
+Image 4: Actual Label frog, Predicted Label frog  
+Image 5: Actual Label frog, Predicted Label frog  
+Image 6: Actual Label automobile, Predicted Label truck  
+Image 7: Actual Label frog, Predicted Label frog  
+Image 8: Actual Label cat, Predicted Label cat  
+Image 9: Actual Label automobile, Predicted Label automobile  
+```  
+
+NPU実行  
+```  
+(resnet_bf16) C:\Users\Yujiro\Desktop\RyzenWS\RyzenAI-SW\CNN-examples\getting_started_resnet\bf16>python predict.py --ep npu  
+execution started on NPU  
+Image 0: Actual Label cat, Predicted Label cat  
+Image 1: Actual Label ship, Predicted Label ship  
+Image 2: Actual Label ship, Predicted Label ship  
+Image 3: Actual Label airplane, Predicted Label airplane  
+Image 4: Actual Label frog, Predicted Label frog  
+Image 5: Actual Label frog, Predicted Label frog  
+Image 6: Actual Label automobile, Predicted Label truck  
+Image 7: Actual Label frog, Predicted Label frog  
+Image 8: Actual Label cat, Predicted Label cat  
+Image 9: Actual Label automobile, Predicted Label automobile  
+```  
