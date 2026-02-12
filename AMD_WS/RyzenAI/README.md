@@ -79,6 +79,8 @@ Step4.Deploy Model
 > vcpkg list | findstr eigen3
 
 ##### Deploy CPP  
+※ チュートリアルがVisual Studio 2022なのに対して現状入手できるのが2026であったり、  
+   pythonが3.10-3.12だったりとビルド環境の条件がまちまちなのでC++は後回し  
 RyzenWSへ移動してOpenCV環境を実行  
 > cd $rootdir  
 > git clone https://github.com/opencv/opencv.git -b 4.6.0  
@@ -133,3 +135,17 @@ Image 7: Actual Label frog, Predicted Label frog
 Image 8: Actual Label cat, Predicted Label cat  
 Image 9: Actual Label automobile, Predicted Label automobile  
 ```  
+
+#### iGPU Example  
+[チュートリアルはここ](https://github.com/amd/RyzenAI-SW/tree/main/CNN-examples/iGPU/getting_started)  
+
+##### Setup Env  
+> cd RyzenAI-SW\CNN-examples\iGPU\getting_started  
+> conda create --name igpu_example --clone ryzen-ai-1.7.0  
+> conda activate igpu_example  
+> set RYZEN_AI_INSTALLATION_PATH=Path to RyzenAI Installation  
+> python -m pip install -r requirements.txt  
+> pip install onnxruntime-genai  
+> python -m olive.workflows.run --config resnet50_config.json --setup  
+> python -m olive.workflows.run --config resnet50_config.json  
+
