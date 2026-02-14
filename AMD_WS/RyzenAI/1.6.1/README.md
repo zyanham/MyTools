@@ -27,3 +27,19 @@ Ryzen AI Max+395 GMKtecでお試し
   > cd Program Files\RyzenAI\1.6.1\quicktest  
   > python quicktest.py  
 
+```
+(ryzen-ai-1.6.1) C:\Program Files\RyzenAI\1.6.1\quicktest>python quicktest.py
+WARNING: Logging before InitGoogleLogging() is written to STDERR
+I20260213 20:44:18.854471 10696 register_ssmlp.cpp:124] Registering Custom Operator: com.amd:SSMLP
+I20260213 20:44:18.855470 10696 register_matmulnbits.cpp:110] Registering Custom Operator: com.amd:MatMulNBits
+I20260213 20:44:18.881469 10696 vitisai_compile_model.cpp:1263] Vitis AI EP Load ONNX Model Success
+I20260213 20:44:18.881469 10696 vitisai_compile_model.cpp:1264] Graph Input Node Name/Shape (1)
+I20260213 20:44:18.881469 10696 vitisai_compile_model.cpp:1268]          input : [-1x3x32x32]
+I20260213 20:44:18.881469 10696 vitisai_compile_model.cpp:1274] Graph Output Node Name/Shape (1)
+I20260213 20:44:18.881469 10696 vitisai_compile_model.cpp:1278]          output : [-1x10]
+Using TXN FORMAT 0.1
+[Vitis AI EP] No. of Operators :   NPU   398 VITIS_EP_CPU     2
+[Vitis AI EP] No. of Subgraphs :   NPU     1 Actually running on NPU      1
+Test Passed
+```
+
