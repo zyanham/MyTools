@@ -39,5 +39,3 @@ Ryzen AI SWのリポジトリをクローンする必要があるので、[Git f
 v2.53.0をインストール  
 
 > git clone https://github.com/amd/RyzenAI-SW.git -b v1.5.0
-
-
