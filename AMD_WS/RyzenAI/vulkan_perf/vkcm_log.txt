@@ -1,0 +1,31 @@
+C:\Users\Neko\Desktop\RyzenWS\vulkan_perf2\vk_cooperative_matrix_perf>.\build\Release\vk_cooperative_matrix_perf.exe
+usage: vk_cooperative_matrix_perf.exe [--correctness]
+
+VK_KHR_cooperative_matrix supported
+
+shader: shaders/shmemfp16_fp32.spv
+
+cooperativeMatrixProps = 16x16x16   A = float16_t B = float16_t C = float32_t D = float32_t scope = subgroup
+TILE_M=128 TILE_N=128, TILE_K=16 BColMajor=0 workgroupSize=256   30.257569 TFlops
+TILE_M=128 TILE_N=128, TILE_K=16 BColMajor=1 workgroupSize=256   11.794095 TFlops
+TILE_M=128 TILE_N=256, TILE_K=16 BColMajor=0 workgroupSize=256   29.958792 TFlops
+TILE_M=128 TILE_N=256, TILE_K=16 BColMajor=1 workgroupSize=256   12.082333 TFlops
+TILE_M=256 TILE_N=128, TILE_K=16 BColMajor=0 workgroupSize=256   21.825060 TFlops
+TILE_M=256 TILE_N=128, TILE_K=16 BColMajor=1 workgroupSize=256   11.021303 TFlops
+
+shader: shaders/shmemfp16_fp16.spv
+
+cooperativeMatrixProps = 16x16x16   A = float16_t B = float16_t C = float16_t D = float16_t scope = subgroup
+TILE_M=128 TILE_N=128, TILE_K=32 BColMajor=0 workgroupSize=256   25.292410 TFlops
+TILE_M=128 TILE_N=128, TILE_K=32 BColMajor=1 workgroupSize=256   21.768369 TFlops
+TILE_M=128 TILE_N=256, TILE_K=32 BColMajor=0 workgroupSize=256   30.578004 TFlops
+TILE_M=128 TILE_N=256, TILE_K=32 BColMajor=1 workgroupSize=256   15.889447 TFlops
+TILE_M=256 TILE_N=128, TILE_K=32 BColMajor=0 workgroupSize=256   27.845889 TFlops
+TILE_M=256 TILE_N=128, TILE_K=32 BColMajor=1 workgroupSize=256   21.194016 TFlops
+TILE_M=256 TILE_N=256, TILE_K=32 BColMajor=0 workgroupSize=256   3.650689 TFlops
+TILE_M=256 TILE_N=256, TILE_K=32 BColMajor=1 workgroupSize=256   3.278937 TFlops
+
+shader: shaders/shmemu8_s32.spv
+shaders/shmemu8_s32.spv not found!
+
+C:\Users\Neko\Desktop\RyzenWS\vulkan_perf2\vk_cooperative_matrix_perf>
