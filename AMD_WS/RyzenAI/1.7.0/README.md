@@ -3,7 +3,7 @@
 Ryzen AI Max+395 GMKtecでお試し  
 
 以下、v1.7.0の操作メモ  
-[公式ドキュメント](https://ryzenai.docs.amd.com/en/latest/)  
+[公式ドキュメント](https://ryzenai.docs.amd.com/en/1.7/)  
 
 #### インストール開始  
 ・Visual Studio Community 2026をインストール    
@@ -15,12 +15,12 @@ Ryzen AI Max+395 GMKtecでお試し
      - path\to\miniforge3\condabin  
      - path\to\miniforge3\Scripts\  
      - path\to\miniforge3\  
-  [Ryzen AI Driver](https://ryzenai.docs.amd.com/en/latest/inst.html)をインストール。NPU Driver (Version 32.0.203.280)  
+  [Ryzen AI Driver](https://ryzenai.docs.amd.com/en/1.7/inst.html)をインストール。NPU Driver (Version 32.0.203.280)  
     タスクマネージャーで NPU driver version: 32.0.203.280の表記があることを確認
 
   再起動  
 
-  [Ryzen AI Software](https://ryzenai.docs.amd.com/en/latest/inst.html)をインストールする。  
+  [Ryzen AI Software](https://ryzenai.docs.amd.com/en/1.7/inst.html)をインストールする。  
   
 #### Miniforge起動  
   > conda activate ryzen-ai-1.7.0  
@@ -37,7 +37,7 @@ Test Passed
 ```  
 
 #### NPUチュートリアル開始  
-[チュートリアル](https://ryzenai.docs.amd.com/en/latest/examples.html)お試ししてみよう。  
+[チュートリアル](https://ryzenai.docs.amd.com/en/1.7/examples.html)お試ししてみよう。  
   
 Ryzen AI SWのリポジトリをクローンする必要があるので、[Git for Windows](https://gitforwindows.org/)をインストールしよう  
 
