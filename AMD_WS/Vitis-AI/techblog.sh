@@ -1,40 +1,57 @@
-#! /bin/bash
+amd-edf:/mnt/temp/XFeat_WS# bash run_npu_image.bash 
+WARNING: /etc/vai.sh was not found; using the current environment.
+Fatal Python error: Bus error
 
-#git clone -b v3.5 https://github.com/Xilinx/Vitis-AI.git
-
-cd Vitis-AI/model_zoo
-#mkdir -p work/d2k
-#mkdir -p work/quant
-
-cd work/d2k
-#git clone https://github.com/qqwweee/keras-yolo3.git
-
-cd ../quant
-#wget https://www.xilinx.com/bin/public/openDownload?filename=tf2_yolov3_coco_416_416_65.9G_2.5.zip -O tf2_yolov3_coco_416_416_65.9G_2.5.zip
-#unzip tf2_yolov3_coco_416_416_65.9G_2.5.zip
-cd tf2_yolov3_coco_416_416_65.9G_2.5/code/test
-#mkdir float
-
-cd ../../../../d2k/keras-yolo3
-#wget https://pjreddie.com/media/files/yolov3-tiny.weights
-
-#sed -i 's/from keras.layers.normalization/from keras.layers/' convert.py
-#python3 convert.py yolov3-tiny.cfg yolov3-tiny.weights model_data/yolov3-tiny.h5
-
-#mkdir -p ../../quant/tf2_yolov3_coco_416_416_65.9G_2.5/code/test/float
-#cp model_data/yolov3-tiny.h5 ../../quant/tf2_yolov3_coco_416_416_65.9G_2.5/code/test/float
-
-cd ../../quant/tf2_yolov3_coco_416_416_65.9G_2.5/code/test/
-#sed -i 's/python /python3 /' convert_data.sh
-
-#bash download_data.sh
-cd ../../data
-#ln -s ../code/test/annotations .
-#ln -s ../code/test/val2017 .
-cd ../
-#bash ./code/test/convert_data.sh
-
-
-
-pwd
-
+Current thread 0x0000ffffb153b020 (most recent call first):
+  File "<frozen importlib._bootstrap>", line 488 in _call_with_frames_removed
+  File "<frozen importlib._bootstrap_external>", line 1293 in create_module
+  File "<frozen importlib._bootstrap>", line 813 in module_from_spec
+  File "<frozen importlib._bootstrap>", line 921 in _load_unlocked
+  File "<frozen importlib._bootstrap>", line 1331 in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 1360 in _find_and_load
+  File "/usr/lib/python3.12/site-packages/numpy/core/overrides.py", line 8 in <module>
+  File "<frozen importlib._bootstrap>", line 488 in _call_with_frames_removed
+  File "<frozen importlib._bootstrap_external>", line 999 in exec_module
+  File "<frozen importlib._bootstrap>", line 935 in _load_unlocked
+  File "<frozen importlib._bootstrap>", line 1331 in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 1360 in _find_and_load
+  File "<frozen importlib._bootstrap>", line 488 in _call_with_frames_removed
+  File "<frozen importlib._bootstrap>", line 1415 in _handle_fromlist
+  File "/usr/lib/python3.12/site-packages/numpy/core/multiarray.py", line 10 in <module>
+  File "<frozen importlib._bootstrap>", line 488 in _call_with_frames_removed
+  File "<frozen importlib._bootstrap_external>", line 999 in exec_module
+  File "<frozen importlib._bootstrap>", line 935 in _load_unlocked
+  File "<frozen importlib._bootstrap>", line 1331 in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 1360 in _find_and_load
+  File "<frozen importlib._bootstrap>", line 488 in _call_with_frames_removed
+  File "<frozen importlib._bootstrap>", line 1415 in _handle_fromlist
+  File "/usr/lib/python3.12/site-packages/numpy/core/__init__.py", line 24 in <module>
+  File "<frozen importlib._bootstrap>", line 488 in _call_with_frames_removed
+  File "<frozen importlib._bootstrap_external>", line 999 in exec_module
+  File "<frozen importlib._bootstrap>", line 935 in _load_unlocked
+  File "<frozen importlib._bootstrap>", line 1331 in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 1360 in _find_and_load
+  File "<frozen importlib._bootstrap>", line 488 in _call_with_frames_removed
+  File "<frozen importlib._bootstrap>", line 1310 in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 1360 in _find_and_load
+  File "/usr/lib/python3.12/site-packages/numpy/__config__.py", line 4 in <module>
+  File "<frozen importlib._bootstrap>", line 488 in _call_with_frames_removed
+  File "<frozen importlib._bootstrap_external>", line 999 in exec_module
+  File "<frozen importlib._bootstrap>", line 935 in _load_unlocked
+  File "<frozen importlib._bootstrap>", line 1331 in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 1360 in _find_and_load
+  File "/usr/lib/python3.12/site-packages/numpy/__init__.py", line 130 in <module>
+  File "<frozen importlib._bootstrap>", line 488 in _call_with_frames_removed
+  File "<frozen importlib._bootstrap_external>", line 999 in exec_module
+  File "<frozen importlib._bootstrap>", line 935 in _load_unlocked
+  File "<frozen importlib._bootstrap>", line 1331 in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 1360 in _find_and_load
+  File "/usr/lib/python3.12/site-packages/cv2/__init__.py", line 11 in <module>
+  File "<frozen importlib._bootstrap>", line 488 in _call_with_frames_removed
+  File "<frozen importlib._bootstrap_external>", line 999 in exec_module
+  File "<frozen importlib._bootstrap>", line 935 in _load_unlocked
+  File "<frozen importlib._bootstrap>", line 1331 in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 1360 in _find_and_load
+  File "/mnt/temp/XFeat_WS/src/run_npu_image.py", line 10 in <module>
+Bus error (core dumped)
+amd-edf:/mnt/temp/XFeat_WS#
