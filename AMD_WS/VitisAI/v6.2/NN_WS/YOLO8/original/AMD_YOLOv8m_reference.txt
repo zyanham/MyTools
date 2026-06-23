@@ -1,0 +1,10 @@
+AMD Vitis-AI v6.2 official reference:
+Vitis-AI/versal_2ve/examples/tutorials/yolov8m
+
+This YOLO8 workspace follows the same main idea for YOLO8m:
+- Ultralytics YOLOv8m export to ONNX opset 17
+- VitisAIExecutionProvider compile with VEK385/ve2-xc2ve3858 config
+- File-to-file host and NPU inference
+
+Quantization is intentionally not used in this workspace yet, following the
+current project policy.

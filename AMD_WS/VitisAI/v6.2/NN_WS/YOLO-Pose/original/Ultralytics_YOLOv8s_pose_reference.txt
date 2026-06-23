@@ -1,0 +1,5 @@
+Upstream model source:
+https://github.com/ultralytics/ultralytics
+
+This workspace uses the pretrained Ultralytics yolov8s-pose.pt model and exports
+it to models/yolo_pose.onnx.

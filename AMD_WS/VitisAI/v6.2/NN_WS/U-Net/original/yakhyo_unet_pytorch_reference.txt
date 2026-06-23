@@ -1,0 +1,5 @@
+Official implementation:
+https://github.com/yakhyo/unet-pytorch
+
+This workspace uses the upstream Carvana U-Net architecture and pretrained
+weights/last.pt checkpoint, fetched by 02_export.bash into third_party/.

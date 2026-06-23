@@ -1,0 +1,8 @@
+AuraFace-v1 source:
+https://huggingface.co/fal/AuraFace-v1
+
+This workspace uses the recognition model:
+glintr100.onnx -> auraface.onnx
+
+The detector model from AuraFace-v1 is not compiled here. Inputs are expected to
+be already face-centered/cropped test images from ../Dataset/HumanFaces.
