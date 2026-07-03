@@ -1,0 +1,14 @@
+amd-edf:/home/amd-edf/YOLO8# bash 05_run_npu.bash 
+2026-06-24 06:06:29.288221981 [W:onnxruntime:Default, device_discovery.cc:211 DiscoverDevicesForPlatform] GPU device discovery failed: device_discovery.cc:91 ReadFileContents Failed to open file: "/sys/class/drm/card1/device/vendor"
+2026-06-24 06:06:29.579884021 [W:onnxruntime:, vaip_driver_info_stub.cpp:39 vaip_driver_info_stub.cpp] No driver detection supported
+F20260624 06:07:22.576715  1258 vaiml_compile.cpp:623] Model compilation is not supported in a deployment only installation. Please compile the model with a full installation.
+2026-06-24 06:07:22.576772552 [F:onnxruntime:, vaiml_compile.cpp:623 vaiml_compile.cpp] Model compilation is not supported in a deployment only installation. Please compile the model with a full installation.
+car01.jpg: 1 detection(s) -> results/npu_yolov8s/car01_det.jpg
+car02.jpg: 1 detection(s) -> results/npu_yolov8s/car02_det.jpg
+car03.jpg: 1 detection(s) -> results/npu_yolov8s/car03_det.jpg
+car04.jpg: 1 detection(s) -> results/npu_yolov8s/car04_det.jpg
+car05.jpg: 1 detection(s) -> results/npu_yolov8s/car05_det.jpg
+wrote results/npu_yolov8s/detections.json
+NPU output: results/npu_yolov8s
+amd-edf:/home/amd-edf/YOLO8# 
+

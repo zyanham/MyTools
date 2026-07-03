@@ -1,0 +1,7 @@
+kornia==0.7.2
+kornia_rs==0.1.14
+opencv-python-headless==4.13.0.92
+numpy==2.4.4
+onnx==1.22.0
+onnxruntime==1.27.0
+tqdm==4.67.1

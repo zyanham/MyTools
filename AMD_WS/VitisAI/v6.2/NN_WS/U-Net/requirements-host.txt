@@ -1,0 +1,5 @@
+opencv-python-headless==4.13.0.92
+numpy==2.4.4
+onnx==1.22.0
+onnxruntime==1.27.0
+pillow==12.2.0
