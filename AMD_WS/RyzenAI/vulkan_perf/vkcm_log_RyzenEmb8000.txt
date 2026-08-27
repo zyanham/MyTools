@@ -1,0 +1,19 @@
+C:\Users\zyanham\RyzenAI_WS\vulkan_perf\vk_cooperative_matrix_perf>.\build\Release\vk_cooperative_matrix_perf.exe
+usage: .\build\Release\vk_cooperative_matrix_perf.exe [--correctness] [--device N] [--list-devices] [--dump-properties] [--dim=N] [--repeat=N] [--barrier=on|off] [--load-c=on|off] [--swizzle=N] [--shmem]
+
+dim=4096 repeat=100
+using physical device 0: AMD Radeon 780M Graphics
+VK_KHR_cooperative_matrix supported
+VK_KHR_shader_bfloat16 supported
+using required subgroup size 32
+
+shader: shaders/shmemfp16_fp16.spv
+
+cooperativeMatrixProps = 16x16x16   A = float16_t B = float16_t C = float16_t D = float16_t scope = subgroup
+TILE_M=128 TILE_N=128, TILE_K=32 BColMajor=0 workgroupSize=256   2.242088 TFlops
+TILE_M=128 TILE_N=128, TILE_K=32 BColMajor=1 workgroupSize=256   1.872696 TFlops
+TILE_M=128 TILE_N=256, TILE_K=32 BColMajor=0 workgroupSize=256   1.178300 TFlops
+TILE_M=128 TILE_N=256, TILE_K=32 BColMajor=1 workgroupSize=256   0.762467 TFlops
+TILE_M=256 TILE_N=128, TILE_K=32 BColMajor=0 workgroupSize=256   6.835062 TFlops
+TILE_M=256 TILE_N=128, TILE_K=32 BColMajor=1 workgroupSize=256   5.719129 TFlops
+CHECK_RESULT failed: VkResult -4 at C:\Users\zyanham\RyzenAI_WS\vulkan_perf\vk_cooperative_matrix_perf\src\vk_cooperative_matrix_perf.cpp:1926
